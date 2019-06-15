@@ -1,2 +1,2 @@
-# Smart-Home-Web-Frontend-Vue.js
-Frontend for controll and statistic smart home
+#install sideBar menu
+```npm i vue-sidebar-menu --save```

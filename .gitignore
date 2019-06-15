@@ -1,0 +1,6 @@
+.idea
+.DS_Store
+vendor
+composer.lock
+node_modules
+app/Assets/images/posters/tt*
