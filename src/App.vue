@@ -24,7 +24,7 @@ body{
 }
 #nav {
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 0;
   /*background: white;*/
   width: 100%;
@@ -49,3 +49,9 @@ body{
   }
 }
 </style>
+<script>
+  import LayoutFooter from "./components/layout-footer";
+  export default {
+    components: {LayoutFooter}
+  }
+</script>

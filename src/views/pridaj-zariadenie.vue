@@ -29,8 +29,10 @@
         <div class="message">Ok!</div>
       </div>
   </div>
+    <layout-footer></layout-footer>
   </div>
 </template>
+
 
 <style lang="less">
   .about{
@@ -39,7 +41,7 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -71,6 +73,7 @@
     align-items: center;
     padding: 70px 70px 70px 60px;
     margin-top: 4rem;
+    margin-bottom: 4rem;
     .input-div{
       width: 100%;
       z-index: 1;
@@ -146,8 +149,8 @@
 
 </style>
 <script>
-  import AddButton from "../components/add-button";
+  import LayoutFooter from "../components/layout-footer";
   export default {
-    components: {AddButton}
+    components: {LayoutFooter}
   }
 </script>
