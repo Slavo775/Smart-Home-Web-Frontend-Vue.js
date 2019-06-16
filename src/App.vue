@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <div class="title">Smart Home</div>
+      <div>
+        <router-link to="/">Domov</router-link>
+        <router-link to="/pridaj-zariadenie">Pridaj Zariadenie</router-link>
+      </div>
     </div>
     <router-view/>
   </div>
@@ -16,13 +19,32 @@
   text-align: center;
   color: #2c3e50;
 }
+body{
+  margin: 0 !important;
+}
 #nav {
-  padding: 30px;
-  a {
+  display: flex;
+  position: fixed;
+  top: 0;
+  /*background: white;*/
+  width: 100%;
+  height: 10%;
+  background: transparent;
+  justify-content: space-between;
+  text-align: center;
+  padding-top: 1rem;
+  .title{
+    color: white;
     font-weight: bold;
-    color: #2c3e50;
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+  a {
+    margin-right: 1rem;
+    color: #ffffff;
+    text-decoration: none;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #ffffff;
     }
   }
 }
