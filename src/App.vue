@@ -50,8 +50,8 @@ body{
 }
 </style>
 <script>
-  import LayoutFooter from "./components/layout-footer";
+  import LayoutFooter from './components/layout-footer';
   export default {
-    components: {LayoutFooter}
-  }
+    components: {LayoutFooter},
+  };
 </script>
