@@ -14,7 +14,7 @@
               <router-link to="/pridaj-zariadenie">Pridaj Zariadenie</router-link>
             </li>
             <li class="dropdown-menu__item">
-              <router-link to="/pridaj-zariadenie">Pridaj Izbu</router-link>
+              <router-link to="/pridaj-izbu">Pridaj Izbu</router-link>
             </li>
             <li class="dropdown-menu__item">
               <router-link to="/pridaj-zariadenie">Pridaj Hue Zariadenie</router-link>
@@ -76,7 +76,6 @@ body{
     }
 
     &__link {
-      text-transform: uppercase;
 
       &:hover {
       }
