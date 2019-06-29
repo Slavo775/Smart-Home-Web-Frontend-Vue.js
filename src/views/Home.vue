@@ -1,18 +1,58 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <div class = "content">
+      <button-for-hue
+                      v-bind:button-text="this.On"
+                      v-bind:state="true"
+                      ></button-for-hue>
+      <button-for-hue
+                      v-bind:state="false"
+                      v-bind:button-text=this.Off ></button-for-hue>
+    </div>
+    <layout-footer></layout-footer>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
-
+import HelloWorld from '@/components/HelloWorld.vue';
+import LayoutFooter from '@/components/layout-footer.vue';
+import ButtonForHue from '@/components/button-for-hue.vue';
 @Component({
   components: {
+    ButtonForHue,
+    LayoutFooter,
     HelloWorld,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  public data() {
+    return{
+      On: 'Zapni',
+      Off: 'Vypni',
+    };
+  }
+}
+
+
 </script>
+
+<style lang="less">
+  .home {
+    background: url("../assets/Comcast_Event-Feature-1600.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    .content{
+      height: 200rem;
+      padding: 5rem;
+    }
+  }
+
+</style>
