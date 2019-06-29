@@ -38,14 +38,18 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
-        name: "add-room-form",
+        name: 'add-room-form',
         data (){
             return{
                 name: '',
                 description: '',
+                message: '',
                 nameValidation: true,
                 descriptionValidation: true,
+                errorMessage: false,
+                successMessage: false,
             }
         },
         methods: {
@@ -61,15 +65,49 @@
                 }
                 return validation;
             },
+            sendRequest(){
+                axios({
+                    method: 'post',
+                    url: 'http://localhost:8888/add-room',
+                    data: {
+                        name: this.name,
+                        description: this.description,
+                    },
+                    headers: {
+                        'Content-Type': 'json/plain;charset=utf-8',
+                    },
+                }).then((response) => {
+                    const status = 'status';
+                    if (response.data[status]) {
+                        this.successMessage = true;
+                        this.message = 'OK!';
+                        return true;
+                    } else {
+                        console.log('false');
+                        this.errorMessage = true;
+                        this.message = 'Niečo sa pokazilo!';
+                        return false;
+                    }
+                }).catch(() => {
+                    console.log('catch');
+                    this.errorMessage = true;
+                    this.message = 'Niečo sa pokazilo!';
+                    return false;
+                });
+            },
             submit(){
                 this.nameValidation = true;
                 this.descriptionValidation = true;
                 if (!this.validationField()) {
-                    this.message = 'Vyplnte vsetky polia!';
                     this.errorMessage = true;
+                    this.message = 'Vyplnte vsetky polia!';
                     return;
                 }
-            }
+                if(this.sendRequest()){
+                    this.name = '';
+                    this.description = '';
+                }
+            },
         }
     }
 </script>
