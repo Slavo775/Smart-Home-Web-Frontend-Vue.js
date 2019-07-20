@@ -4,6 +4,7 @@
       <div class="title">Smart Home</div>
       <ul class="menu">
         <li class="menu-item"><router-link to="/">Domov</router-link></li>
+        <li class="menu-item"><router-link to="/ovladace">Ovladace</router-link></li>
         <li class="menu__item menu__item--dropdown" v-on:click="toggle('ranking')" v-bind:class="{'open' : dropDowns.ranking.open}">
           <a class="menu__link menu__link--toggle" href="#">
             <span>Pridaj</span>

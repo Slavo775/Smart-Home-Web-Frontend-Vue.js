@@ -23,5 +23,10 @@ export default new Router({
       name: 'pridaj-izbu',
       component: () => import('./views/add-room.vue'),
     },
+    {
+      path: '/ovladace',
+      name: 'ovladace',
+      component: () => import('./views/remotes.vue'),
+    },
   ],
 });

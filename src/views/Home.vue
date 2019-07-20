@@ -18,6 +18,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import HelloWorld from '@/components/HelloWorld.vue';
 import LayoutFooter from '@/components/layout-footer.vue';
 import ButtonForHue from '@/components/button-for-hue.vue';
+
 @Component({
   components: {
     ButtonForHue,
