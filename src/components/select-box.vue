@@ -4,7 +4,6 @@
         <select id="selectBox" v-model = 'selected' v-on:change= "changeSelect()">
             <option v-for="option in options">{{option}}</option>
         </select>
-        <div>{{selected}}</div>
     </div>
 </template>
 
@@ -13,7 +12,7 @@
         name: 'select-box',
         data() {
             return{
-                selected: '',
+                selected: this.options[0],
             };
 
         },
