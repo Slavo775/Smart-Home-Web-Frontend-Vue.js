@@ -44,6 +44,8 @@
                     v-bind:button-rec='buttonRec'
                     v-bind:button-fast-backward='buttonFastBackward'
                     v-bind:button-fast-forward='buttonFastForward'
+                    v-bind:magio-go-show="magioGoShow"
+                    v-bind:samsung-show="samsungShow"
             ></tv-remote>
         </div>
     </div>
@@ -59,7 +61,7 @@
         name: 'remotes',
         components: {TvRemote, SelectBox, RemoteButton},
         data() {
-            return{
+            return {
                 arduinoIp: 'http://192.168.31.14:8080',
                 deviceName: '/samsung',
                 buttonOnOff: '/buttonON',
@@ -70,6 +72,8 @@
                     'Magio GO',
                     'Led pas',
                 ],
+                magioGoShow: false,
+                samsungShow: true,
                 selectedItem: 'Samsung TV',
                 buttonOne: '/buttonOne',
                 buttonTwo: '/buttonTwo',
@@ -101,9 +105,8 @@
                 buttonBackward: '/buttonBackward',
                 buttonForward: '/buttonForward',
                 buttonRec: '/buttonRec',
-                buttonFastBacward: '/buttonFastBackward',
-                buttonFastForward: 'buttonFastForward',
-
+                buttonFastBackward: '/buttonFastBackward',
+                buttonFastForward: '/buttonFastForward',
                 tvRemoteShow: true,
                 ledStripRemoteShow: false,
             };
@@ -115,18 +118,26 @@
                     this.tvRemoteShow = true;
                     this.ledStripRemoteShow = false;
                     this.deviceName = '/samsung';
+                    this.magioGoShow = false;
+                    this.samsungShow = true;
                 } else if (select === 'Magio') {
                     this.tvRemoteShow = true;
                     this.ledStripRemoteShow = false;
                     this.deviceName = '/magio';
+                    this.magioGoShow = false;
+                    this.samsungShow = false;
                 } else if (select === 'Magio GO') {
                     this.tvRemoteShow = true;
                     this.ledStripRemoteShow = false;
                     this.deviceName = '/magiogo';
+                    this.magioGoShow = true;
+                    this.samsungShow = false;
                 } else {
                     this.tvRemoteShow = false;
                     this.ledStripRemoteShow = true;
                     this.deviceName = '/ledstrip';
+                    this.magioGoShow = false;
+                    this.samsungShow = false;
                 }
             },
         },
@@ -134,16 +145,28 @@
 </script>
 
 <style lang="scss">
-.remote-container{
-    background: url("../assets/remote-control-black-sony-command-wallpaper.jpg") no-repeat center center fixed;
-    padding-top: 5rem;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
+    .remote-container {
+        background: url("../assets/remote-control-black-sony-command-wallpaper.jpg") no-repeat center center fixed;
+        padding-top: 5rem;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .select {
+        width: -webkit-fill-available;
+        font-size: inherit;
+        color: white;
+        background: transparent;
+        border: none;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid;
+        padding-bottom: 1rem;
+    }
 </style>

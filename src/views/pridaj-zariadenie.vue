@@ -1,7 +1,6 @@
 <template>
     <div class="add-device-content">
         <add-device-form></add-device-form>
-        <layout-footer></layout-footer>
     </div>
 </template>
 
@@ -65,7 +64,8 @@
 
             .input {
                 display: block;
-                width: 100%;
+                margin-right: 0;
+                width: -webkit-fill-available;
                 background: #e6e6e6;
                 font-family: Montserrat-Bold;
                 font-size: 15px;
@@ -130,6 +130,16 @@
         border-style: solid !important;
         border-color: red !important;
         border-width: 1px !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .buttons {
+            display: block;
+        }
+
+        .add-device-container {
+            padding: 0.5rem
+        }
     }
 
     @font-face {

@@ -4,197 +4,198 @@
         <div class="two-button button-container">
         <remote-button
                 v-bind:icon-show="true"
-                v-bind:action-url=arduinoIp+samsungRemote+buttonOnOff
+                v-bind:action-url=arduinoIp+deviceName+buttonOnOff
                 v-bind:icon-name=powerOff
         ></remote-button>
         <remote-button
                 v-bind:icon-show="true"
-                v-bind:action-url=arduinoIp+samsungRemote+buttonSource
+                v-bind:action-url=arduinoIp+deviceName+buttonSource
                 v-bind:icon-name=ellipsisH
         ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonOne
+                    v-bind:action-url=arduinoIp+deviceName+buttonOne
                     v-bind:text-content="1"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonTwo
+                    v-bind:action-url=arduinoIp+deviceName+buttonTwo
                     v-bind:text-content="2"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonThree
+                    v-bind:action-url=arduinoIp+deviceName+buttonThree
                     v-bind:text-content="3"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonFour
+                    v-bind:action-url=arduinoIp+deviceName+buttonFour
                     v-bind:text-content="4"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonFive
+                    v-bind:action-url=arduinoIp+deviceName+buttonFive
                     v-bind:text-content="5"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonSix
+                    v-bind:action-url=arduinoIp+deviceName+buttonSix
                     v-bind:text-content="6"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonSeven
+                    v-bind:action-url=arduinoIp+deviceName+buttonSeven
                     v-bind:text-content="7"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonEight
+                    v-bind:action-url=arduinoIp+deviceName+buttonEight
                     v-bind:text-content="8"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonNine
+                    v-bind:action-url=arduinoIp+deviceName+buttonNine
                     v-bind:text-content="9"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:text-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonZero
+                    v-bind:action-url=arduinoIp+deviceName+buttonZero
                     v-bind:text-content="0"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonVolUp
+                    v-bind:action-url=arduinoIp+deviceName+buttonVolUp
                     v-bind:icon-name=volumeUp
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonMute
+                    v-bind:action-url=arduinoIp+deviceName+buttonMute
                     v-bind:icon-name=volumeMute
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonChUp
+                    v-bind:action-url=arduinoIp+deviceName+buttonChUp
                     v-bind:icon-name=angleUp
             ></remote-button>
         </div>
         <div class="two-button button-container">
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonVolDown
+                    v-bind:action-url=arduinoIp+deviceName+buttonVolDown
                     v-bind:icon-name=volumeDown
             ></remote-button>
 
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonChDown
+                    v-bind:action-url=arduinoIp+deviceName+buttonChDown
                     v-bind:icon-name=angleDown
             ></remote-button>
         </div>
-        <div class="two-button button-container">
+        <div class="button-container" v-bind:class="{'right-two-button' : !samsungShow}">
             <remote-button
+                    v-if="samsungShow"
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonSport
+                    v-bind:action-url=arduinoIp+deviceName+buttonSport
                     v-bind:icon-name=futbol
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonUp
+                    v-bind:action-url=arduinoIp+deviceName+buttonUp
                     v-bind:icon-name=caretUp
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonHome
+                    v-bind:action-url=arduinoIp+deviceName+buttonHome
                     v-bind:icon-name=home
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonLeft
+                    v-bind:action-url=arduinoIp+deviceName+buttonLeft
                     v-bind:icon-name=caretLeft
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonOk
+                    v-bind:action-url=arduinoIp+deviceName+buttonOk
                     v-bind:icon-name=ok
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonRight
+                    v-bind:action-url=arduinoIp+deviceName+buttonRight
                     v-bind:icon-name=caretRight
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonUndo
+                    v-bind:action-url=arduinoIp+deviceName+buttonUndo
                     v-bind:icon-name=undo
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonDown
+                    v-bind:action-url=arduinoIp+deviceName+buttonDown
                     v-bind:icon-name=caretDown
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonExit
+                    v-bind:action-url=arduinoIp+deviceName+buttonExit
                     v-bind:icon-name=exit
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonPlay
+                    v-bind:action-url=arduinoIp+deviceName+buttonPlay
                     v-bind:icon-name=play
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonPause
+                    v-bind:action-url=arduinoIp+deviceName+buttonPause
                     v-bind:icon-name=pause
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonStop
+                    v-bind:action-url=arduinoIp+deviceName+buttonStop
                     v-bind:icon-name=stop
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonBackward
+                    v-bind:action-url=arduinoIp+deviceName+buttonBackward
                     v-bind:icon-name=backward
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonRec
+                    v-bind:action-url=arduinoIp+deviceName+buttonRec
                     v-bind:icon-name=circle
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonForward
+                    v-bind:action-url=arduinoIp+deviceName+buttonForward
                     v-bind:icon-name=forward
             ></remote-button>
         </div>
-        <div class="button-container two-button">
+        <div class="button-container two-button" v-if="magioGoShow">
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonFastBackward
+                    v-bind:action-url=arduinoIp+deviceName+buttonFastBackward
                     v-bind:icon-name=fastBackward
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
-                    v-bind:action-url=arduinoIp+samsungRemote+buttonFastForward
+                    v-bind:action-url=arduinoIp+deviceName+buttonFastForward
                     v-bind:icon-name=fastForward
             ></remote-button>
         </div>
@@ -210,7 +211,6 @@
         components: { RemoteButton},
         data() {
           return{
-              samsungRemote: '/samsung',
               powerOff: 'power-off',
               ellipsisH: 'ellipsis-h',
               volumeUp: 'volume-up',
@@ -242,6 +242,8 @@
             'arduinoIp',
             'deviceName',
             'selectedItem',
+            'magioGoShow',
+            'samsungShow',
             'buttonOnOff',
             'buttonSource',
             'buttonOne',
@@ -300,6 +302,10 @@
         font-weight: 900;
         font-size: xx-large;
         margin-bottom: 1rem;
+    }
+    .right-two-button{
+        justify-content: flex-end;
+        display: flex;
     }
 }
 </style>

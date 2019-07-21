@@ -23,7 +23,31 @@
           </ul>
         </li>
       </ul>
+
+      <ul class ="mobile-menu">
+        <li class="mobile-menu__item menu__item--dropdown" v-on:click="mobileToggle('rankingMobile')" v-bind:class="{'openMobile' : dropDownsMobile.rankingMobile.openMobile}">
+          <a class="mobile-menu__link menu__link--toggle" href="#">
+            <span><font-awesome-icon icon='bars'></font-awesome-icon></span>
+          </a>
+          <ul class="dropdown-menu-mobile">
+            <li class="dropdown-menu__item__mobile">
+              <router-link class="text-mobile" to="/">Domov</router-link>
+            </li>
+            <li class="dropdown-menu__item__mobile">
+              <router-link class="text-mobile" to="/ovladace">Ovladace</router-link>
+            </li>
+            <li class="dropdown-menu__item__mobile">
+              <router-link class="text-mobile" to="/pridaj-izbu">Pridaj Izbu</router-link>
+            </li>
+            <li class="dropdown-menu__item__mobile">
+              <router-link class="text-mobile" to="/pridaj-zariadenie">Pridaj Zariadenie</router-link>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
+
+
     <router-view/>
   </div>
 </template>
@@ -63,7 +87,8 @@ body{
     color: #ffffff;
     text-decoration: none;
     &.router-link-exact-active {
-      color: #ffffff;
+      color: #aeaeae;
+
     }
   }
   .menu {
@@ -80,7 +105,7 @@ body{
 
       &:hover {
       }
-      &--toggle {}
+      &--toggle { }
     }
     &__icon {
       margin: 0 !important;
@@ -88,6 +113,23 @@ body{
   }
   .open .dropdown-menu {
     display: block;
+  }
+  .openMobile .dropdown-menu-mobile {
+    display: block;
+  }
+  .dropdown-menu-mobile {
+    background: white;
+    color: #aeaeae !important;
+    padding-left: 0;
+    z-index: 2;
+    font-size: 1.5rem;
+    position: absolute;
+    min-width: 100%;
+    top: 2.2rem;
+    right: 0;
+    display: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
   }
   .dropdown-menu {
     background: black;
@@ -101,6 +143,27 @@ body{
     border-radius: 4px;
   }
 
+  .text-mobile{
+    color: #aeaeae;
+  }
+
+  .dropdown-menu__item__mobile{
+    padding: 1rem 1rem 1rem 1rem;
+    height: 3rem;
+    width: 18rem;
+    color: #aeaeae !important;
+  }
+
+
+  .dropdown-menu__item:first-child .dropdown-menu__link {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  .dropdown-menu__item:last-child .dropdown-menu__link {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
   .dropdown-menu__item:first-child .dropdown-menu__link {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -123,12 +186,48 @@ body{
       background-color: #ccc;
     }
   }
+
+  .mobile-menu{
+    display: none;
+    margin-top: 0;
+    &__item {
+      position: relative;
+      padding-right: 0;
+
+      &--dropdown {}
+    }
+
+    &__link {
+      font-size: 2rem;
+      &:hover {
+      }
+      &--toggle {}
+    }
+    &__icon {
+      margin: 0 !important;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .menu {
+      display: none;
+    }
+    .mobile-menu{
+      display: flex;
+    }
+  }
 }
 </style>
 <script>
   import LayoutFooter from './components/layout-footer';
+  import { library } from '@fortawesome/fontawesome-svg-core';
+  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+  import {faBars} from '@fortawesome/free-solid-svg-icons';
+
+  library.add(faBars);
+
   export default {
-    components: {LayoutFooter},
+    components: {LayoutFooter, FontAwesomeIcon},
     ready() {
       const self = this;
       window.addEventListener('click', (e) => {
@@ -143,10 +242,17 @@ body{
           ranking: {
             open: false},
         },
+        dropDownsMobile: {
+          rankingMobile: {
+            openMobile: false},
+        },
       };
     },
 
     methods: {
+      mobileToggle(dropdownName) {
+        this.dropDownsMobile[dropdownName].openMobile = !this.dropDownsMobile[dropdownName].openMobile;
+      },
       toggle(dropdownName) {
         this.dropDowns[dropdownName].open = !this.dropDowns[dropdownName].open;
       },

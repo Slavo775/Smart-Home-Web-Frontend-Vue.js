@@ -1,7 +1,7 @@
 <template>
     <div>
         <label for="selectBox"></label>
-        <select id="selectBox" v-model = 'selected' v-on:change= "changeSelect()">
+        <select class="select"  id="selectBox" v-model = 'selected' v-on:change= "changeSelect()">
             <option v-for="option in options">{{option}}</option>
         </select>
     </div>
