@@ -204,10 +204,10 @@
 
 <script>
     import RemoteButton from '../components/remote-button';
-    import {buttonsIcon} from "../variables";
+    import {buttonsIcon} from '../variables';
 
     export default {
-        name: "tv-remote",
+        name: 'tv-remote',
         components: { RemoteButton},
         data() {
           return{
@@ -279,7 +279,7 @@
             'buttonFastBackward',
             'buttonFastForward',
         ],
-    }
+    };
 </script>
 
 <style lang="scss">

@@ -146,7 +146,7 @@
 
 <style lang="scss">
     .remote-container {
-        background: url("../assets/remote-control-black-sony-command-wallpaper.jpg") no-repeat center center fixed;
+        background: url("../assets/remote-control-black-sony-command-wallpaper.jpeg") no-repeat center center fixed;
         padding-top: 5rem;
         -webkit-background-size: cover;
         -moz-background-size: cover;

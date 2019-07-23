@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label for="selectBox"></label>
+        <label for="selectBox" aria-label="Select"></label>
         <select class="select"  id="selectBox" v-model = 'selected' v-on:change= "changeSelect()">
             <option v-for="option in options">{{option}}</option>
         </select>

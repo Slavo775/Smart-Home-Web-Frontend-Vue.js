@@ -1,5 +1,5 @@
 <template>
-    <button class="icon icon-expand" v-on:click="sendGetRequest()">
+    <button class="icon icon-expand" v-on:click="sendGetRequest()" :id=iconName aria-label="Button">
         <font-awesome-icon v-if="iconShow" class="ii" :icon=iconName></font-awesome-icon>
         <span v-if="textShow" class="ii">{{textContent}}</span></button>
 </template>
