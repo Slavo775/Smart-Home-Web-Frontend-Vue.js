@@ -53,9 +53,9 @@
 
 <script>
 
-    import RemoteButton from '../components/remote-button';
-    import SelectBox from '../components/select-box';
-    import TvRemote from '../components/tv-remote';
+    import RemoteButton from '../components/inputs/remote-button';
+    import SelectBox from '../components/inputs/select-box';
+    import TvRemote from '../components/containers/tv-remote';
 
     export default {
         name: 'remotes',

@@ -203,8 +203,8 @@
 </template>
 
 <script>
-    import RemoteButton from '../components/remote-button';
-    import {buttonsIcon} from '../variables';
+    import RemoteButton from '../inputs/remote-button';
+    import {buttonsIcon} from '../../variables';
 
     export default {
         name: 'tv-remote',

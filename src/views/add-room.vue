@@ -1,16 +1,14 @@
 <template>
     <div class="add-room-content">
         <add-room-form></add-room-form>
-        <layout-footer></layout-footer>
     </div>
 </template>
 
 <script>
-    import AddRoomForm from '../components/add-room-form';
-    import LayoutFooter from '../components/layout-footer';
+    import AddRoomForm from '../components/containers/add-room-form';
     export default {
         name: 'add-room',
-        components: {LayoutFooter, AddRoomForm},
+        components: { AddRoomForm},
     };
 </script>
 

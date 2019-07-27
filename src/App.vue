@@ -219,7 +219,6 @@ body{
 }
 </style>
 <script>
-  import LayoutFooter from './components/layout-footer';
   import { library } from '@fortawesome/fontawesome-svg-core';
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
   import {faBars} from '@fortawesome/free-solid-svg-icons';
@@ -227,7 +226,7 @@ body{
   library.add(faBars);
 
   export default {
-    components: {LayoutFooter, FontAwesomeIcon},
+    components: { FontAwesomeIcon},
     ready() {
       const self = this;
       window.addEventListener('click', (e) => {

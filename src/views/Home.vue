@@ -15,15 +15,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue';
-import LayoutFooter from '@/components/layout-footer.vue';
-import ButtonForHue from '@/components/button-for-hue.vue';
+import ButtonForHue from '@/components/inputs/button-for-hue.vue';
 
 @Component({
   components: {
     ButtonForHue,
-    LayoutFooter,
-    HelloWorld,
   },
 })
 export default class Home extends Vue {

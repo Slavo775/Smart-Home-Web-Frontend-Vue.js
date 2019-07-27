@@ -5,12 +5,11 @@
 </template>
 
 <script>
-    import LayoutFooter from '../components/layout-footer';
     import axios from 'axios';
-    import AddDeviceForm from '../components/add-device-form';
+    import AddDeviceForm from '../components/containers/add-device-form';
 
     export default {
-        components: {AddDeviceForm, LayoutFooter},
+        components: {AddDeviceForm},
     };
 </script>
 
