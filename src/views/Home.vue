@@ -36,6 +36,7 @@ export default class Home extends Vue {
 
 <style lang="less">
   .home {
+    padding-left: 260px;
     background: url("../assets/Comcast_Event-Feature-1600.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;

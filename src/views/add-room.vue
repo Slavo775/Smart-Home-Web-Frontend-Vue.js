@@ -14,7 +14,7 @@
 
 <style lang="less">
     .add-room-content {
-        background: url("../assets/room_vanity_flooring_wall_80351_1600x1200.jpg") no-repeat center center fixed;
+        padding-left: 260px;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

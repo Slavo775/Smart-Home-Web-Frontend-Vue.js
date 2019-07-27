@@ -1,5 +1,5 @@
 <template>
-    <button class="icon icon-expand" v-on:click="sendGetRequest()" :id=iconName aria-label="Button">
+    <button class="icon icon-expand" :class="cssClass" v-on:click="sendGetRequest()" :id=iconName aria-label="Button">
         <font-awesome-icon v-if="iconShow" class="ii" :icon=iconName></font-awesome-icon>
         <span v-if="textShow" class="ii">{{textContent}}</span></button>
 </template>
@@ -66,7 +66,7 @@
             'iconShow',
             'textShow',
             'textContent',
-
+            'cssClass',
         ],
         methods: {
             sendGetRequest() {
@@ -92,7 +92,7 @@
         margin: 32px;
         padding: 32px;
         background-color: #03a9f4;
-        box-shadow: 3px 3px 7px #333;
+        /*box-shadow: 3px 3px 7px #333;*/
 
     &:active {
          box-shadow: none;
@@ -103,9 +103,12 @@
         width: 100%;
         height: $icon-size;
     }
-
+    .iconRed{background: #E94441 !important;}
+    .iconGreen{background: #5FB664;}
+    .iconBlue{background: #1FC1D4;}
+    .iconOrange{background: #FD9916;}
     .icon{
-        background: #2c3e50;
+        /*background: #2c3e50;*/
         cursor: pointer;
         position: relative;
         display: inline-block;
@@ -130,28 +133,6 @@
             color: $white;
             font-size: $icon-size/2;
             transition: all 0.25s ease;
-        }
-    }
-
-    .icon-fill-red{
-        &:hover::before{
-            box-shadow: inset 0 0 0 $icon-size $red;
-        }
-    }
-
-    .icon-fill-green{
-        &:hover::before{
-            box-shadow: inset 0 0 0 $icon-size $green;
-        }
-    }
-
-    .icon-expand{
-        &::before{
-            background: $red;
-            box-shadow: inset 0 0 0 $icon-size $background;
-        }
-        &:hover::before{
-            box-shadow: inset 0 0 0 1px $background;
         }
     }
 

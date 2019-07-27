@@ -15,7 +15,7 @@
 
 <style lang="less">
     .add-device-content {
-        background: url("../assets/wp2163554.png") no-repeat center center fixed;
+        padding-left: 260px;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;

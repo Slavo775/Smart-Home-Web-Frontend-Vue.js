@@ -6,11 +6,13 @@
                 v-bind:icon-show="true"
                 v-bind:action-url=arduinoIp+deviceName+buttonOnOff
                 v-bind:icon-name=powerOff
+                v-bind:css-class="iconRed"
         ></remote-button>
         <remote-button
                 v-bind:icon-show="true"
                 v-bind:action-url=arduinoIp+deviceName+buttonSource
                 v-bind:icon-name=ellipsisH
+                v-bind:css-class="iconBlue"
         ></remote-button>
         </div>
         <div class="button-container">
@@ -18,16 +20,19 @@
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonOne
                     v-bind:text-content="1"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonTwo
                     v-bind:text-content="2"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonThree
                     v-bind:text-content="3"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -35,16 +40,19 @@
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonFour
                     v-bind:text-content="4"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonFive
                     v-bind:text-content="5"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonSix
                     v-bind:text-content="6"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -52,16 +60,19 @@
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonSeven
                     v-bind:text-content="7"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonEight
                     v-bind:text-content="8"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonNine
                     v-bind:text-content="9"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -69,6 +80,7 @@
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonZero
                     v-bind:text-content="0"
+                    v-bind:css-class="iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -76,16 +88,19 @@
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonVolUp
                     v-bind:icon-name=volumeUp
+                    v-bind:css-class="iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonMute
                     v-bind:icon-name=volumeMute
+                    v-bind:css-class="iconBlue"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonChUp
                     v-bind:icon-name=angleUp
+                    v-bind:css-class="iconOrange"
             ></remote-button>
         </div>
         <div class="two-button button-container">
@@ -93,12 +108,14 @@
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonVolDown
                     v-bind:icon-name=volumeDown
+                    v-bind:css-class="iconOrange"
             ></remote-button>
 
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonChDown
                     v-bind:icon-name=angleDown
+                    v-bind:css-class="iconOrange"
             ></remote-button>
         </div>
         <div class="button-container" v-bind:class="{'right-two-button' : !samsungShow}">
@@ -107,16 +124,19 @@
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonSport
                     v-bind:icon-name=futbol
+                    v-bind:css-class="iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonUp
                     v-bind:icon-name=caretUp
+                    v-bind:css-class="iconBlue"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonHome
                     v-bind:icon-name=home
+                    v-bind:css-class="iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -124,16 +144,19 @@
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonLeft
                     v-bind:icon-name=caretLeft
+                    v-bind:css-class="iconBlue"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonOk
                     v-bind:icon-name=ok
+                    v-bind:css-class="iconRed"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonRight
                     v-bind:icon-name=caretRight
+                    v-bind:css-class="iconBlue"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -141,16 +164,19 @@
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonUndo
                     v-bind:icon-name=undo
+                    v-bind:css-class="iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonDown
                     v-bind:icon-name=caretDown
+                    v-bind:css-class="iconBlue"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonExit
                     v-bind:icon-name=exit
+                    v-bind:css-class="iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -158,16 +184,19 @@
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonPlay
                     v-bind:icon-name=play
+                    v-bind:css-class="iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonPause
                     v-bind:icon-name=pause
+                    v-bind:css-class="iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonStop
                     v-bind:icon-name=stop
+                    v-bind:css-class="iconOrange"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -175,16 +204,19 @@
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonBackward
                     v-bind:icon-name=backward
+                    v-bind:css-class="iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonRec
                     v-bind:icon-name=circle
+                    v-bind:css-class="iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonForward
                     v-bind:icon-name=forward
+                    v-bind:css-class="iconOrange"
             ></remote-button>
         </div>
         <div class="button-container two-button" v-if="magioGoShow">
@@ -192,11 +224,13 @@
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonFastBackward
                     v-bind:icon-name=fastBackward
+                    v-bind:css-class="iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonFastForward
                     v-bind:icon-name=fastForward
+                    v-bind:css-class="iconOrange"
             ></remote-button>
         </div>
     </div>
@@ -235,7 +269,10 @@
               fastBackward: 'fast-backward',
               pause: 'pause',
               circle: 'circle',
-
+              iconRed: 'iconRed',
+              iconBlue: 'iconBlue',
+              iconOrange: 'iconOrange',
+              iconGreen: 'iconGreen',
           };
         },
         props: [
@@ -287,10 +324,12 @@
    background: white;
     padding: 1rem;
     border-radius: 1rem;
-    border-style: solid;
-    border-width: 5px;
-    border-color: black;
+    /*border-style: solid;*/
+    /*border-width: 5px;*/
+    /*border-color: black;*/
     margin-bottom: 3rem;
+    background: #fff;
+    box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
     .button-container{
         margin-bottom: 1rem;
     }
@@ -302,6 +341,15 @@
         font-weight: 900;
         font-size: xx-large;
         margin-bottom: 1rem;
+        ::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            height: 1px;
+            width: calc(100% - 30px);
+            background-color: hsla(0, 0%, 71%, 0.3);
+        }
     }
     .right-two-button{
         justify-content: flex-end;
