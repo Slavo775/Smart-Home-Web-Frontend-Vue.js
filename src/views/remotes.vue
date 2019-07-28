@@ -171,4 +171,9 @@
         border-bottom: 1px solid;
         padding-bottom: 1rem;
     }
+    @media only screen and (max-width: 600px) {
+        .remote-container{
+            padding-left: 0;
+        }
+    }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="one-remote-container">
-        <div class="remote-name">{{selectedItem}}</div>
+        <div class="remote-name">{{selectedItem}}<div class="remote-name-line"></div></div>
         <div class="two-button button-container">
         <remote-button
                 v-bind:icon-show="true"
@@ -338,17 +338,26 @@
         justify-content: space-between;
     }
     .remote-name{
-        font-weight: 900;
-        font-size: xx-large;
         margin-bottom: 1rem;
-        ::after{
+        text-transform: uppercase;
+        padding: 5px 0;
+        display: inline-block;
+        font-size: 18px;
+        color: #3c4858;
+        white-space: nowrap;
+        font-weight: bold;
+        line-height: 30px;
+        overflow: hidden;
+        text-align: center;
+        width: 80%;
+        .remote-name-line{
             content: "";
-            position: absolute;
             bottom: 0;
             right: 15px;
             height: 1px;
-            width: calc(100% - 30px);
+            width: 100%;
             background-color: hsla(0, 0%, 71%, 0.3);
+            margin-top: 1rem;
         }
     }
     .right-two-button{
