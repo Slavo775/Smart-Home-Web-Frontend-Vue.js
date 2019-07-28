@@ -149,7 +149,7 @@
         padding-left: 260px;
         /*background: url("../assets/remote-control-black-sony-command-wallpaper.jpeg") no-repeat center center fixed;*/
         width: -webkit-fill-available;
-        padding-top: 5rem;
+        padding-top: 1rem;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -162,14 +162,20 @@
 
     .select {
         width: -webkit-fill-available;
-        font-size: inherit;
-        color: white;
         background: transparent;
         border: none;
-        font-weight: 500;
         margin-bottom: 1rem;
-        border-bottom: 1px solid;
-        padding-bottom: 1rem;
+        text-transform: uppercase;
+        padding: 5px 0;
+        display: inline-block;
+        font-size: 18px;
+        color: #3c4858;
+        white-space: nowrap;
+        font-weight: 400;
+        line-height: 30px;
+        overflow: hidden;
+        text-align: center;
+        text-decoration: none;
     }
     @media only screen and (max-width: 600px) {
         .remote-container{
