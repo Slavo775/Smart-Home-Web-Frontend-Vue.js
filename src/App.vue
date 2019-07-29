@@ -72,6 +72,7 @@ body{
       background-color: hsla(0,0%,71%,.3)
     }
     .text{
+        text-decoration: none;
       text-transform: uppercase;
       padding: 5px 0;
       display: inline-block;
