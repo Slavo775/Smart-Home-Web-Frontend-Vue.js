@@ -45,26 +45,23 @@
         color: #333;
         background: #fff;
         width: 100%;
-        box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
-
         .card-header{
             border-radius: 3px;
-
             padding: 15px;
             margin-top: -20px;
             float: left;
         }
         .card-header-error{
             background-color: #E73E3A;
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(244,67,54,.4);
         }
         .card-header-warning{
             background-color: #FC930B;
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0,.4);
         }
         .card-header-info{
             background-color: #4AA64F;
-        }
-        .card-box-shadow{
-            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0.4);
+            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(76,175,80,.4);
         }
         .card-icon{
             font-family: 'Material Icons';
