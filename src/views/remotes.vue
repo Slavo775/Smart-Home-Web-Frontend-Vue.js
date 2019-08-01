@@ -47,6 +47,26 @@
                     v-bind:magio-go-show="magioGoShow"
                     v-bind:samsung-show="samsungShow"
             ></tv-remote>
+            <led-remote
+                    v-if="ledStripRemoteShow"
+                    v-bind:selected-item="selectedItem"
+                    v-bind:arduino-ip="arduinoIp"
+                    v-bind:device-name="deviceName"
+                    v-bind:button-on="buttonOn"
+                    v-bind:button-off="buttonOff"
+                    v-bind:button-one="buttonOne"
+                    v-bind:button-two='buttonTwo'
+                    v-bind:button-three='buttonThree'
+                    v-bind:button-four='buttonFour'
+                    v-bind:button-five='buttonFive'
+                    v-bind:button-six='buttonSix'
+                    v-bind:button-seven='buttonSeven'
+                    v-bind:button-eight='buttonEight'
+                    v-bind:button-nine='buttonNine'
+                    v-bind:button-zero='buttonZero'
+            >
+
+            </led-remote>
         </div>
     </div>
 </template>
@@ -56,10 +76,11 @@
     import RemoteButton from '../components/inputs/remote-button';
     import SelectBox from '../components/inputs/select-box';
     import TvRemote from '../components/containers/tv-remote';
+    import LedRemote from '../components/containers/led-remote';
 
     export default {
         name: 'remotes',
-        components: {TvRemote, SelectBox, RemoteButton},
+        components: {LedRemote, TvRemote, SelectBox, RemoteButton},
         data() {
             return {
                 arduinoIp: 'http://192.168.31.14:8080',
@@ -74,6 +95,8 @@
                 ],
                 magioGoShow: false,
                 samsungShow: true,
+                buttonOn: '/buttonOn',
+                buttonOff: '/buttonOff',
                 selectedItem: 'Samsung TV',
                 buttonOne: '/buttonOne',
                 buttonTwo: '/buttonTwo',

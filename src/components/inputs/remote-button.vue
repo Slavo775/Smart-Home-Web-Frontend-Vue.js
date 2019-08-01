@@ -30,6 +30,7 @@
     import {faPlay} from '@fortawesome/free-solid-svg-icons';
     import {faPause} from '@fortawesome/free-solid-svg-icons';
     import {faStop} from '@fortawesome/free-solid-svg-icons';
+    import {faSun} from '@fortawesome/free-solid-svg-icons';
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import axios from 'axios';
 
@@ -57,6 +58,7 @@
     library.add(faPlay);
     library.add(faPause);
     library.add(faStop);
+    library.add(faSun);
     export default {
         name: 'remote-button',
         components: {FontAwesomeIcon},

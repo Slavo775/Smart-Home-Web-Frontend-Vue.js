@@ -7,7 +7,7 @@
         </div>
         <div class="card-header-text"><span>{{ip}}</span><span>{{name}}</span><span>{{date}}</span></div>
         <div class="content">{{content}}</div>
-        <div class="button-container"><button v-if="type === 1" class="btn">Hide</button><button v-if="type === 1" class="btn">Test</button></div>
+        <div class="button-container"><button v-if="type === 1 || type === 2" class="btn" v-on:click="clickOnHide">Hide</button><button v-if="type === 1" class="btn" v-on:click="clickOnTest">Test</button></div>
     </div>
 </template>
 
@@ -31,7 +31,17 @@
             'ip',
             'name',
             'date',
+            'errorCode',
+            'statusId',
         ],
+        methods: {
+            clickOnHide() {
+
+            },
+            clickOnTest() {
+
+            },
+        },
     };
 </script>
 

@@ -13,3 +13,67 @@ $purple       : #7E3661;
 
 // Text
 $white        : #FFFFFF;
+
+$color-input-unfocused-text: #999;
+$color-input-unfocused-border: #afafaf;
+$color-input-focused-text: #1696cd;
+$color-input-focused-border: #1696cd;
+
+$media-types: (
+        desktop-large: '(min-width: 1200px)',
+        desktop: '(min-width: 1000px)',
+        tablet: '(max-width: 999px)',
+        mobile: '(max-width: 650px)',
+);
+
+@mixin respond-to($media) {
+  @media #{map-get($media-types, $media)} {
+    @content;
+  }
+}
+
+.one-remote-container{
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  /*border-style: solid;*/
+  /*border-width: 5px;*/
+  /*border-color: black;*/
+  margin-bottom: 3rem;
+  background: #fff;
+  box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+  .button-container{
+    margin-bottom: 1rem;
+  }
+  .two-button{
+    display: flex;
+    justify-content: space-between;
+  }
+  .remote-name{
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    padding: 5px 0;
+    display: inline-block;
+    font-size: 18px;
+    color: #3c4858;
+    white-space: nowrap;
+    font-weight: bold;
+    line-height: 30px;
+    overflow: hidden;
+    text-align: center;
+    width: 80%;
+    .remote-name-line{
+      content: "";
+      bottom: 0;
+      right: 15px;
+      height: 1px;
+      width: 100%;
+      background-color: hsla(0, 0%, 71%, 0.3);
+      margin-top: 1rem;
+    }
+  }
+  .right-two-button{
+    justify-content: flex-end;
+    display: flex;
+  }
+}

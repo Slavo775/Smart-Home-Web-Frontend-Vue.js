@@ -4,13 +4,13 @@
         <div class="two-button button-container">
         <remote-button
                 v-bind:icon-show="true"
-                v-bind:action-url=arduinoIp+deviceName+buttonOnOff
+                v-bind:action-url=arduinoIp+deviceName+buttonOn
                 v-bind:icon-name=powerOff
                 v-bind:css-class="iconRed"
         ></remote-button>
         <remote-button
                 v-bind:icon-show="true"
-                v-bind:action-url=arduinoIp+deviceName+buttonSource
+                v-bind:action-url=arduinoIp+deviceName+buttonOff
                 v-bind:icon-name=ellipsisH
                 v-bind:css-class="iconBlue"
         ></remote-button>
