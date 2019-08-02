@@ -109,6 +109,20 @@
     .iconGreen{background: #5FB664;}
     .iconBlue{background: #1FC1D4;}
     .iconOrange{background: #FD9916;}
+    .iconOneLed{background:#A14A39}
+    .iconTwoLed{background:#308448}
+    .iconThreeLed{background:#1A4C7D}
+    .iconFourLed{background:#C56238}
+    .iconFiveLed{background:#116E79}
+    .iconSixLed{background:#A14A39}
+    .iconSevenLed{background:#422B3B}
+    .iconEightLed{background:#A14A39}
+    .iconNineLed{background:#C57F39}
+    .iconTenLed{background:#A14A39}
+    .iconElevenLed{background:#095964}
+    .iconTwelveLed{background:#49324F}
+
+
     .icon{
         /*background: #2c3e50;*/
         cursor: pointer;

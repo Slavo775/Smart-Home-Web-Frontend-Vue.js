@@ -4,15 +4,15 @@
         <div class="two-button button-container">
         <remote-button
                 v-bind:icon-show="true"
-                v-bind:action-url=arduinoIp+deviceName+buttonOn
-                v-bind:icon-name=powerOff
-                v-bind:css-class="iconRed"
+                v-bind:action-url=arduinoIp+deviceName+buttonOnOff
+                v-bind:icon-name=buttonsIcon.powerOff
+                v-bind:css-class="buttonsIcon.iconRed"
         ></remote-button>
         <remote-button
                 v-bind:icon-show="true"
-                v-bind:action-url=arduinoIp+deviceName+buttonOff
-                v-bind:icon-name=ellipsisH
-                v-bind:css-class="iconBlue"
+                v-bind:action-url=arduinoIp+deviceName+buttonSource
+                v-bind:icon-name=buttonsIcon.ellipsisH
+                v-bind:css-class="buttonsIcon.iconBlue"
         ></remote-button>
         </div>
         <div class="button-container">
@@ -20,19 +20,19 @@
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonOne
                     v-bind:text-content="1"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonTwo
                     v-bind:text-content="2"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonThree
                     v-bind:text-content="3"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -40,19 +40,19 @@
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonFour
                     v-bind:text-content="4"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonFive
                     v-bind:text-content="5"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonSix
                     v-bind:text-content="6"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -60,19 +60,19 @@
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonSeven
                     v-bind:text-content="7"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonEight
                     v-bind:text-content="8"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonNine
                     v-bind:text-content="9"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
@@ -80,42 +80,42 @@
                     v-bind:text-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonZero
                     v-bind:text-content="0"
-                    v-bind:css-class="iconGreen"
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonVolUp
-                    v-bind:icon-name=volumeUp
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.volumeUp
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonMute
-                    v-bind:icon-name=volumeMute
-                    v-bind:css-class="iconBlue"
+                    v-bind:icon-name=buttonsIcon.volumeMute
+                    v-bind:css-class="buttonsIcon.iconBlue"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonChUp
-                    v-bind:icon-name=angleUp
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.angleUp
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
         </div>
         <div class="two-button button-container">
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonVolDown
-                    v-bind:icon-name=volumeDown
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.volumeDown
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
 
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonChDown
-                    v-bind:icon-name=angleDown
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.angleDown
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
         </div>
         <div class="button-container" v-bind:class="{'right-two-button' : !samsungShow}">
@@ -123,114 +123,114 @@
                     v-if="samsungShow"
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonSport
-                    v-bind:icon-name=futbol
-                    v-bind:css-class="iconGreen"
+                    v-bind:icon-name=buttonsIcon.futbol
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonUp
-                    v-bind:icon-name=caretUp
-                    v-bind:css-class="iconBlue"
+                    v-bind:icon-name=buttonsIcon.caretUp
+                    v-bind:css-class="buttonsIcon.iconBlue"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonHome
-                    v-bind:icon-name=home
-                    v-bind:css-class="iconGreen"
+                    v-bind:icon-name=buttonsIcon.home
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonLeft
-                    v-bind:icon-name=caretLeft
-                    v-bind:css-class="iconBlue"
+                    v-bind:icon-name=buttonsIcon.caretLeft
+                    v-bind:css-class="buttonsIcon.iconBlue"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonOk
-                    v-bind:icon-name=ok
-                    v-bind:css-class="iconRed"
+                    v-bind:icon-name=buttonsIcon.ok
+                    v-bind:css-class="buttonsIcon.iconRed"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonRight
-                    v-bind:icon-name=caretRight
-                    v-bind:css-class="iconBlue"
+                    v-bind:icon-name=buttonsIcon.caretRight
+                    v-bind:css-class="buttonsIcon.iconBlue"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonUndo
-                    v-bind:icon-name=undo
-                    v-bind:css-class="iconGreen"
+                    v-bind:icon-name=buttonsIcon.undo
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonDown
-                    v-bind:icon-name=caretDown
-                    v-bind:css-class="iconBlue"
+                    v-bind:icon-name=buttonsIcon.caretDown
+                    v-bind:css-class="buttonsIcon.iconBlue"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonExit
-                    v-bind:icon-name=exit
-                    v-bind:css-class="iconGreen"
+                    v-bind:icon-name=buttonsIcon.exit
+                    v-bind:css-class="buttonsIcon.iconGreen"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonPlay
-                    v-bind:icon-name=play
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.play
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonPause
-                    v-bind:icon-name=pause
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.pause
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonStop
-                    v-bind:icon-name=stop
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.stop
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
         </div>
         <div class="button-container">
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonBackward
-                    v-bind:icon-name=backward
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.backward
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonRec
-                    v-bind:icon-name=circle
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.circle
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonForward
-                    v-bind:icon-name=forward
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.forward
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
         </div>
         <div class="button-container two-button" v-if="magioGoShow">
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonFastBackward
-                    v-bind:icon-name=fastBackward
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.fastBackward
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
             <remote-button
                     v-bind:icon-show="true"
                     v-bind:action-url=arduinoIp+deviceName+buttonFastForward
-                    v-bind:icon-name=fastForward
-                    v-bind:css-class="iconOrange"
+                    v-bind:icon-name=buttonsIcon.fastForward
+                    v-bind:css-class="buttonsIcon.iconOrange"
             ></remote-button>
         </div>
     </div>
@@ -238,41 +238,14 @@
 
 <script>
     import RemoteButton from '../inputs/remote-button';
-    import {buttonsIcon} from '../../variables';
+    import {buttonsIcon} from '../../remote-variables.js';
 
     export default {
         name: 'tv-remote',
         components: { RemoteButton},
         data() {
           return{
-              powerOff: 'power-off',
-              ellipsisH: 'ellipsis-h',
-              volumeUp: 'volume-up',
-              volumeDown: 'volume-down',
-              volumeMute: 'volume-mute',
-              angleUp: 'angle-up',
-              angleDown: 'angle-down',
-              futbol: 'futbol',
-              home: 'home',
-              caretDown: 'caret-down',
-              caretUp: 'caret-up',
-              caretRight: 'caret-right',
-              caretLeft: 'caret-left',
-              ok: 'sign-in-alt',
-              undo: 'undo',
-              exit: 'door-open',
-              play: 'play',
-              stop: 'stop',
-              forward: 'forward',
-              backward: 'backward',
-              fastForward: 'fast-forward',
-              fastBackward: 'fast-backward',
-              pause: 'pause',
-              circle: 'circle',
-              iconRed: 'iconRed',
-              iconBlue: 'iconBlue',
-              iconOrange: 'iconOrange',
-              iconGreen: 'iconGreen',
+              buttonsIcon: buttonsIcon,
           };
         },
         props: [
