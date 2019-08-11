@@ -1,76 +1,26 @@
 <template>
     <div class="add-device-container">
-        <h1 class="header">Pridaj zariadenie</h1>
-        <div class="input-div">
-            <label for="meno-zariadenia"></label>
-            <input type="text"
-                   name="meno-zariadenia"
-                   id="meno-zariadenia"
-                   class="input"
-                   placeholder="Meno zariadenia"
-                   v-model="name"
-                   v-bind:class="{ 'input-error' : !nameValidation }">
-            <span class="input-span"></span>
-        </div>
-        <div class="input-div">
-            <label for="typ-zariadenia"></label>
-            <input type="text"
-                   name="typ-zariadenia"
-                   id="typ-zariadenia"
-                   class="input"
-                   placeholder="Typ zariadenia"
-                   v-model="type"
-                   v-bind:class="{ 'input-error' : !typeValidation }">
-        </div>
-        <div class="input-div">
-            <label for="uloha-zariadenia"></label>
-            <input type="text"
-                   name="uloha-zariadenia"
-                   id="uloha-zariadenia"
-                   class="input"
-                   placeholder="Uloha zariadenia"
-                   v-model="role"
-                   v-bind:class="{ 'input-error' : !roleValidation }">
-        </div>
-        <div class="input-div">
-            <label for="pozicia-zariadenia"></label>
-            <input type="text"
-                   name="pozicia-zariadenia"
-                   id="pozicia-zariadenia"
-                   class="input"
-                   placeholder="Pozicia zariadenia"
-                   v-model="location"
-                   v-bind:class="{ 'input-error' : !locationValidation }">
-        </div>
-        <div class="input-div">
-            <label for="ip-zariadenia"></label>
-            <input type="text"
-                   v-model="IP"
-                   name="ip-zariadenia"
-                   id="ip-zariadenia"
-                   class="input"
-                   placeholder="IP adresa"
-                   v-bind:class="{ 'input-error' : !ipValidation }">
-        </div>
-        <div class="input-div">
-            <label for="description"></label>
-            <textarea id="description"
-                      v-model="description"
-                      name="description"
-                      class="input"
-                      placeholder="Popis zariadenia"
-                      v-bind:class="{ 'input-error' : !descriptionValidation }"></textarea>
-        </div>
+        <div class="header-box"><h1 class="header">Pridaj zariadenie</h1></div>
+        <div class = "add-device-container-content">
+            <add-input
+                    v-bind:input_id="'ip'"
+                    v-bind:label_text="'IP Adresa'"
+                    v-model="IP"
+                    v-on:hide="hideMessages"
+            >
 
-        <div class="buttons">
-            <button class="button-add"
-                    v-on:click="submit">
-                Pridaj
-            </button>
-            <button class="button-add">Test</button>
+            </add-input>
             <div class="message"
                  v-bind:class="{ 'error-message' : errorMessage , 'success-message': successMessage }"
             >{{this.message}}
+            </div>
+            <div class="buttons">
+                <button class="button-add"
+                        v-on:click="submit">
+                    Pridaj
+                </button>
+                <button class="button-add"
+                v-on:click="test">Test</button>
             </div>
         </div>
     </div>
@@ -78,28 +28,28 @@
 
 <script>
     import axios from 'axios';
+    import AddInput from "../inputs/add-input";
+
     export default {
         name: 'add-device-form',
+        components: {AddInput},
         data() {
             return {
                 IP: '',
-                location: '',
-                role: '',
-                type: '',
-                name: '',
-                message: '',
-                description: '',
                 errorMessage: false,
                 successMessage: false,
                 ipValidation: true,
-                nameValidation: true,
-                typeValidation: true,
-                roleValidation: true,
-                locationValidation: true,
-                descriptionValidation: true,
+                message: '',
             };
         },
         methods: {
+            /**
+             * This function hide error and success message
+             */
+            hideMessages(){
+                this.errorMessage = false;
+                this.successMessage = false;
+            },
             /**
              * validate IP address using regullar expression
              * @returns {boolean}
@@ -116,60 +66,37 @@
              */
             validateField() {
                 let validation = true;
-                if (!this.name) {
-                    this.nameValidation = false;
-                    validation = false;
-                }
-                if (!this.type) {
-                    this.typeValidation = false;
-                    validation = false;
-                }
-                if (!this.role) {
-                    this.roleValidation = false;
-                    validation = false;
-                }
-                if (!this.location) {
-                    this.locationValidation = false;
-                    validation = false;
-                }
                 if (!this.IP) {
                     this.ipValidation = false;
                     validation = false;
                 }
-                if (!this.description) {
-                    this.descriptionValidation = false;
-                    validation = false;
-                }
-
                 return validation;
 
             },
 
             sendRequestForAddDevice() {
+                this.errorMessage = false;
+                this.message = '';
                 axios({
                     method: 'post',
-                    url: 'http://localhost:8888/add-device',
+                    url: 'http://localhost:8888/add-device-only-ip',
                     data: {
-                        name: this.name,
-                        type: this.type,
-                        role: this.role,
-                        location: this.location,
                         IP: this.IP,
-                        description: this.description,
                     },
                     headers: {
                         'Content-Type': 'json/plain;charset=utf-8',
                     },
-                }).then(function(response) {
+                }).then((response) => {
+                    console.log(response);
                     const status = 'status';
-                    if (response.data[status]) {
+                    if (response.data[status] === 'ok') {
                         this.successMessage = true;
                         this.message = 'OK!';
                     } else {
                         this.errorMessage = true;
                         this.message = 'Niečo sa pokazilo!';
                     }
-                }).catch(function() {
+                }).catch(function () {
                     this.errorMessage = true;
                     this.message = 'Niečo sa pokazilo!';
                 });
@@ -179,12 +106,7 @@
              * function is run when button is clicked
              */
             submit() {
-                this.nameValidation = true;
-                this.typeValidation = true;
-                this.roleValidation = true;
-                this.locationValidation = true;
                 this.ipValidation = true;
-                this.descriptionValidation = true;
 
                 if (!this.validateField()) {
                     this.message = 'Vyplnte vsetky polia!';
@@ -199,6 +121,30 @@
                 }
                 this.sendRequestForAddDevice();
             },
+
+            test() {
+                this.errorMessage = false;
+                this.message = '';
+                axios({
+                    method: 'get',
+                    url: 'http://'+ this.IP +'/status',
+                    data: {
+                        IP: this.IP,
+                    },
+                }).then((response) => {
+                    const status = 'status';
+                    if (response.data[status] === 'ok') {
+                        this.successMessage = true;
+                        this.message = 'OK!';
+                    } else {
+                        this.errorMessage = true;
+                        this.message = 'IP adresa zrejme nie je spravna!';
+                    }
+                }).catch(() =>{
+                    this.errorMessage = true;
+                    this.message = 'IP adresa zrejme nie je spravna!';
+                });
+            }
         },
     };
 </script>

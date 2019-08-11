@@ -1,46 +1,21 @@
 <template>
     <div class="content">
-        <div class="add-device-container">
-            <h1 class="header">Pridaj Izbu</h1>
-            <div class="input-div">
-                <label for="room-name"></label>
-                <input type="text"
-                       name="room-name"
-                       id="room-name"
-                       class="input"
-                       placeholder="Meno izby"
-                       v-model="name"
-                       v-bind:class="{ 'input-error' : !nameValidation }">
-                <span class="input-span"></span>
-            </div>
-            <div class="input-div">
-                <label for="description"></label>
-                <textarea
-                        name="description"
-                        id="description"
-                        class="input"
-                        placeholder="Popis"
-                        v-model="description"
-                        v-bind:class="{ 'input-error' : !descriptionValidation }"></textarea>
-            </div>
-            <div class="buttons">
-                <button class="button-add"
-                        v-on:click="submit">
-                    Pridaj
-                </button>
-            </div>
-            <div class="message"
-                 v-bind:class="{ 'error-message' : errorMessage , 'success-message': successMessage }"
-            >{{this.message}}
-            </div>
-        </div>
+        <add-input
+                v-bind:label_text="'test label'"
+                v-bind:input_id="'test'"
+                v-model="modelText"
+                >
+        </add-input>
+        <button v-on:click="clickOnButton">Click me!</button>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
+    import AddInput from '../inputs/add-input';
     export default {
         name: 'add-room-form',
+        components: {AddInput},
         data() {
             return{
                 name: '',
@@ -50,9 +25,13 @@
                 descriptionValidation: true,
                 errorMessage: false,
                 successMessage: false,
+                modelText: '',
             };
         },
         methods: {
+            clickOnButton(){
+                console.log(this.modelText)
+            },
             validationField() {
                 let validation = true;
                 if (!this.name) {

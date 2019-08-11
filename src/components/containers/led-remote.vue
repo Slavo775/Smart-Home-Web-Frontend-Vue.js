@@ -155,8 +155,8 @@
             'brightnessDown',
             'buttonVolUp',
             'buttonMute',
-        ]
-    }
+        ],
+    };
 </script>
 
 <style lang="scss">

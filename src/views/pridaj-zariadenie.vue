@@ -13,7 +13,9 @@
     };
 </script>
 
-<style lang="less">
+<style lang="scss">
+    @import "~@/Shared";
+
     .add-device-content {
         padding-left: 260px;
         -webkit-background-size: cover;
@@ -21,72 +23,102 @@
         -o-background-size: cover;
         background-size: cover;
         height: 100%;
-        width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
     }
 
-    .header {
-        display: block;
-        font-family: Montserrat-ExtraBold;
-        font-size: 24px;
-        color: #333333;
-        line-height: 1.2;
-        justify-content: center;
-        text-align: center;
-        width: 100%;
+    .header-box {
+        border-radius: 3px;
+        margin-top: -40px;
+        padding: 15px;
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(156, 39, 176, .4);
+        background: linear-gradient(60deg, #ab47bc, #8e24aa);
+
+        .header {
+            font-size: 1.125rem;
+            font-weight: 300;
+            line-height: 1.4em;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+        }
     }
 
     .add-device-container {
-        width: 37rem;
+        border: 0;
+        margin-bottom: 30px;
+        margin-top: 10%;
+        border-radius: 6px;
+        color: #333;
         background: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
+        position: relative;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding: 70px 70px 70px 60px;
-        margin-top: 6rem;
-        margin-bottom: 5rem;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        font-size: .875rem;
+        padding: 15px;
 
-        .input-div {
-            width: 100%;
-            z-index: 1;
-            margin-bottom: 20px;
+        .add-device-container-content {
+            padding: 2rem 20px;
+            position: relative;
+            flex: 1 1 auto;
+            .message {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: -9rem;
+                left: 10rem;
+                animation: mymove 1s;
+            }
 
-            .input {
-                display: block;
-                margin-right: 0;
-                width: -webkit-fill-available;
-                background: #e6e6e6;
-                font-family: Montserrat-Bold;
-                font-size: 15px;
-                line-height: 1.5;
-                color: #666666;
-                border-radius: 25px;
-                border: none;
-                padding: 1rem;
+            .error-message {
+                color: #D8000C;
+                background-color: #FFBABA;
+                padding: 0.5rem;
+            }
+
+            .success-message {
+                margin: 10px 0;
+                padding: 10px;
+                border-radius: 3px 3px 3px 3px;
+                color: #270;
+                background-color: #DFF2BF;
+            }
+            .input-div {
+                width: 100%;
+                z-index: 1;
+                margin-bottom: 20px;
+
+                .input {
+                    display: block;
+                    margin-right: 0;
+                    width: -webkit-fill-available;
+                    background: #e6e6e6;
+                    font-family: Montserrat-Bold;
+                    font-size: 15px;
+                    line-height: 1.5;
+                    color: #666666;
+                    border-radius: 25px;
+                    border: none;
+                    padding: 1rem;
+                }
             }
         }
     }
 
     .buttons {
         display: flex;
+        margin-top: 2rem;
 
         .button-add {
             margin-right: 1rem;
             min-width: 193px;
             height: 50px;
             border-radius: 25px;
-            background: #18A0A3;
-            font-family: Montserrat-Bold;
+            background: $main;
             font-size: 15px;
             line-height: 1.5;
             color: #fff;
@@ -102,26 +134,6 @@
             -o-transition: all 0.4s;
             -moz-transition: all 0.4s;
             transition: all 0.4s;
-        }
-
-        .message {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .error-message {
-            color: #D8000C;
-            background-color: #FFBABA;
-            padding: 0.5rem;
-        }
-
-        .success-message {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 3px 3px 3px 3px;
-            color: #270;
-            background-color: #DFF2BF;
         }
     }
 
@@ -161,6 +173,15 @@
         src: url('../assets/fonts/montserrat/Montserrat-Medium.ttf');
     }
 
+    @media only screen and (max-width: 600px) {
+        .add-device-content {
+            padding-left: 0;
+        }
+    }
+    @keyframes mymove {
+        from {top: 0;}
+        to {top: -9rem;}
+    }
 
 </style>
 
