@@ -94,7 +94,7 @@
                         this.message = 'OK!';
                     } else {
                         this.errorMessage = true;
-                        this.message = 'Niečo sa pokazilo!';
+                        this.message = response.data.message;
                     }
                 }).catch(function () {
                     this.errorMessage = true;
@@ -127,7 +127,7 @@
                 this.message = '';
                 axios({
                     method: 'get',
-                    url: 'http://'+ this.IP +'/status',
+                    url: 'http://'+ this.IP +':8080/deviceStatus',
                     data: {
                         IP: this.IP,
                     },
