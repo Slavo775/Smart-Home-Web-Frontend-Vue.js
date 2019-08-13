@@ -79,7 +79,7 @@
                 this.message = '';
                 axios({
                     method: 'post',
-                    url: 'http://localhost:8888/add-device-only-ip',
+                    url: 'http://192.168.31.118:81/add-device-only-ip',
                     data: {
                         IP: this.IP,
                     },
