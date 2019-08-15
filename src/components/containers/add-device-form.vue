@@ -29,6 +29,7 @@
 <script>
     import axios from 'axios';
     import AddInput from "../inputs/add-input";
+    import {requestData} from '../../env.js';
 
     export default {
         name: 'add-device-form',
@@ -40,6 +41,7 @@
                 successMessage: false,
                 ipValidation: true,
                 message: '',
+                requestData: requestData,
             };
         },
         methods: {
@@ -79,12 +81,13 @@
                 this.message = '';
                 axios({
                     method: 'post',
-                    url: 'http://192.168.31.118:81/add-device-only-ip',
+                    url: 'http://'+ this.requestData.API+':'+ this.requestData.API_port+'/add-device-only-ip',
                     data: {
                         IP: this.IP,
                     },
                     headers: {
                         'Content-Type': 'json/plain;charset=utf-8',
+                        'Accept': 'application/json',
                     },
                 }).then((response) => {
                     console.log(response);

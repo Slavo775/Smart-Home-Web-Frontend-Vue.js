@@ -4,3 +4,4 @@ vendor
 composer.lock
 node_modules
 app/Assets/images/posters/tt*
+src/env.js
