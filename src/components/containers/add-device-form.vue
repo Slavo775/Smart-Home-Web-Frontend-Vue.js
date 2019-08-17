@@ -28,7 +28,7 @@
 
 <script>
     import axios from 'axios';
-    import AddInput from "../inputs/add-input";
+    import AddInput from '../inputs/add-input';
     import {requestData} from '../../env.js';
 
     export default {
@@ -81,7 +81,7 @@
                 this.message = '';
                 axios({
                     method: 'post',
-                    url: 'http://'+ this.requestData.API+':'+ this.requestData.API_port+'/add-device-only-ip',
+                    url: 'http://' + this.requestData.API + ':' + this.requestData.API_port + '/add-device-only-ip',
                     data: {
                         IP: this.IP,
                     },
@@ -90,7 +90,6 @@
                         'Accept': 'application/json',
                     },
                 }).then((response) => {
-                    console.log(response);
                     const status = 'status';
                     if (response.data[status] === 'ok') {
                         this.successMessage = true;
@@ -99,7 +98,7 @@
                         this.errorMessage = true;
                         this.message = response.data.message;
                     }
-                }).catch(function () {
+                }).catch(() => {
                     this.errorMessage = true;
                     this.message = 'Niečo sa pokazilo!';
                 });
@@ -130,7 +129,7 @@
                 this.message = '';
                 axios({
                     method: 'get',
-                    url: 'http://'+ this.IP +':8080/deviceStatus',
+                    url: 'http://' + this.IP + ':8080/deviceStatus',
                     data: {
                         IP: this.IP,
                     },
@@ -143,11 +142,11 @@
                         this.errorMessage = true;
                         this.message = 'IP adresa zrejme nie je spravna!';
                     }
-                }).catch(() =>{
+                }).catch(() => {
                     this.errorMessage = true;
                     this.message = 'IP adresa zrejme nie je spravna!';
                 });
-            }
+            },
         },
     };
 </script>

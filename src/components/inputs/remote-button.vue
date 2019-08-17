@@ -71,6 +71,7 @@
             'cssClass',
         ],
         methods: {
+
             sendGetRequest() {
                 axios({
                     method: 'get',

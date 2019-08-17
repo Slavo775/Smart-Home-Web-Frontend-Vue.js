@@ -43,7 +43,6 @@ export const buttonsIcon = {
 };
 export const buttonsUrl = {
     arduinoIp: 'http://192.168.31.14:8080',
-    deviceName: '/samsung',
     buttonOnOff: '/buttonON',
     buttonSource: '/buttonSource',
     selectOptions: [

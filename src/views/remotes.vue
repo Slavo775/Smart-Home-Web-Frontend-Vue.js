@@ -7,9 +7,9 @@
             ></select-box>
             <tv-remote
                     v-if="tvRemoteShow"
-                    v-bind:selected-item="buttonsUrl.selectedItem"
+                    v-bind:selected-item="selectedItem"
                     v-bind:arduino-ip="buttonsUrl.arduinoIp"
-                    v-bind:device-name="buttonsUrl.deviceName"
+                    v-bind:device-name="deviceName"
                     v-bind:button-on-off="buttonsUrl.buttonOnOff"
                     v-bind:button-source="buttonsUrl.buttonSource"
                     v-bind:button-one="buttonsUrl.buttonOne"
@@ -94,6 +94,7 @@
                     'Magio GO',
                     'Led pas',
                 ],
+                selectedItem: 'Samsung Tv',
                 magioGoShow: false,
                 samsungShow: true,
                 tvRemoteShow: true,

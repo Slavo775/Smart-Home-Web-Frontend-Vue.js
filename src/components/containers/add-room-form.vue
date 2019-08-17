@@ -30,7 +30,6 @@
         },
         methods: {
             clickOnButton(){
-                console.log(this.modelText)
             },
             validationField() {
                 let validation = true;
