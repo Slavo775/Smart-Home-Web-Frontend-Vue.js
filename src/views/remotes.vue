@@ -8,7 +8,7 @@
             <tv-remote
                     v-if="tvRemoteShow"
                     v-bind:selected-item="selectedItem"
-                    v-bind:arduino-ip="buttonsUrl.arduinoIp"
+                    v-bind:arduino-ip="arduinoIp"
                     v-bind:device-name="deviceName"
                     v-bind:button-on-off="buttonsUrl.buttonOnOff"
                     v-bind:button-source="buttonsUrl.buttonSource"
@@ -50,8 +50,8 @@
             <led-remote
                     v-if="ledStripRemoteShow"
                     v-bind:selected-item="selectedItem"
-                    v-bind:arduino-ip="buttonsUrl.arduinoIp"
-                    v-bind:device-name="buttonsUrl.deviceName"
+                    v-bind:arduino-ip="arduinoIp"
+                    v-bind:device-name="deviceName"
                     v-bind:button-on="buttonsUrl.buttonOn"
                     v-bind:button-off="buttonsUrl.buttonOff"
                     v-bind:button-one="buttonsUrl.buttonOne"
