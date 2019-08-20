@@ -110,24 +110,28 @@
                     this.deviceName = '/samsung';
                     this.magioGoShow = false;
                     this.samsungShow = true;
+                    this.arduinoIp = 'http://192.168.31.14:8080';
                 } else if (select === 'Magio') {
                     this.tvRemoteShow = true;
                     this.ledStripRemoteShow = false;
                     this.deviceName = '/magio';
                     this.magioGoShow = false;
                     this.samsungShow = false;
+                    this.arduinoIp = 'http://192.168.31.14:8080';
                 } else if (select === 'Magio GO') {
                     this.tvRemoteShow = true;
                     this.ledStripRemoteShow = false;
                     this.deviceName = '/magiogo';
                     this.magioGoShow = true;
                     this.samsungShow = false;
+                    this.arduinoIp = 'http://192.168.31.218:8080';
                 } else {
                     this.tvRemoteShow = false;
                     this.ledStripRemoteShow = true;
                     this.deviceName = '/ledstrip';
                     this.magioGoShow = false;
                     this.samsungShow = false;
+                    this.arduinoIp = 'http://192.168.31.14:8080';
                 }
             },
         },
