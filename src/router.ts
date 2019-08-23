@@ -28,5 +28,10 @@ export default new Router({
       name: 'ovladace',
       component: () => import('./views/remotes.vue'),
     },
+    {
+      path: '/status',
+      name: 'status',
+      component: () => import('./views/status-page.vue'),
+    },
   ],
 });
