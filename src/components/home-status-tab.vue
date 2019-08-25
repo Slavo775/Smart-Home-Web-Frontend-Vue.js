@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card" v-if="show">
         <div class="card-header card-box-shadow" :class="classStatus">
             <font-awesome-icon v-if="type === 1" icon='times' class="card-icon"></font-awesome-icon>
             <font-awesome-icon v-if="type === 2" icon='exclamation-triangle' class="card-icon"></font-awesome-icon>
@@ -7,11 +7,13 @@
         </div>
         <div class="card-header-text"><span>{{ip}}</span><span>{{name}}</span><span>{{date}}</span></div>
         <div class="content">{{content}}</div>
-        <div class="button-container"><button v-if="type === 1 || type === 2" class="btn" v-on:click="clickOnHide">Hide</button><button v-if="type === 1" class="btn" v-on:click="clickOnTest">Test</button></div>
+        <div class="button-container"><button v-if="type === 1 || type === 2" class="btn" v-on:click="clickOnResolved">Vyriešené</button></div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios';
+    import {requestData} from '../env.js';
     import { library } from '@fortawesome/fontawesome-svg-core';
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
     import {faTimes} from '@fortawesome/free-solid-svg-icons';
@@ -34,12 +36,29 @@
             'errorCode',
             'statusId',
         ],
+        data() {
+            return {
+                requestData,
+                show: true,
+            };
+        },
         methods: {
-            clickOnHide() {
-
-            },
-            clickOnTest() {
-
+            clickOnResolved() {
+                axios({
+                    method: 'post',
+                    url: 'http://' + this.requestData.API + ':' + this.requestData.API_port + '/status/set-resolved',
+                    data: {
+                        id_status: this.statusId,
+                    },
+                    headers: {
+                        'Content-Type': 'json/plain;charset=utf-8',
+                        'Accept': 'application/json',
+                    },
+                }).then(() => {
+                    this.show = false;
+                }).catch(() => {
+                    return false;
+                });
             },
         },
     };
@@ -101,6 +120,7 @@
             margin-left: 6rem;
             padding-bottom: 1rem;
             color: #999;
+            flex-wrap: wrap;
         }
         .content-header{
             text-align: left;

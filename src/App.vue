@@ -66,6 +66,12 @@
                             <font-awesome-icon icon='tv' class="nav-icon"></font-awesome-icon>
                             <p>Ovladace</p></router-link>
                     </li>
+                    <li class="menu-item" v-on:click="dropDownMenuMobile = !dropDownMenuMobile">
+                        <router-link to="/status">
+                            <font-awesome-icon icon='info' class="nav-icon"></font-awesome-icon>
+                            Status
+                        </router-link>
+                    </li>
                     <li class="menu-item" v-on:click="toggle('ranking')"><a href="javascript:">
                         <font-awesome-icon icon='plus' class="nav-icon"></font-awesome-icon>
                         <p>Pridaj</p></a></li>
@@ -443,14 +449,14 @@
             return {
                 dropDowns: {
                     ranking: {
-                        open: false
+                        open: false,
                     },
                 },
                 dropDownMenu: false,
                 dropDownMenuMobile: false,
                 dropDownsMobile: {
                     rankingMobile: {
-                        openMobile: false
+                        openMobile: false,
                     },
                 },
             };

@@ -129,7 +129,7 @@
         components: {RemoteButton},
         data() {
             return {
-                buttonsIcon: buttonsIcon,
+                buttonsIcon,
             };
         },
         props: [

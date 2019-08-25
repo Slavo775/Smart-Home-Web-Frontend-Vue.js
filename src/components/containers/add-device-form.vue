@@ -41,14 +41,14 @@
                 successMessage: false,
                 ipValidation: true,
                 message: '',
-                requestData: requestData,
+                requestData,
             };
         },
         methods: {
             /**
              * This function hide error and success message
              */
-            hideMessages(){
+            hideMessages() {
                 this.errorMessage = false;
                 this.successMessage = false;
             },

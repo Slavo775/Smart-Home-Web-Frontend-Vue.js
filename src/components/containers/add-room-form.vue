@@ -29,8 +29,6 @@
             };
         },
         methods: {
-            clickOnButton(){
-            },
             validationField() {
                 let validation = true;
                 if (!this.name) {

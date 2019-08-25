@@ -85,7 +85,7 @@
         components: {LedRemote, TvRemote, SelectBox, RemoteButton},
         data() {
             return {
-                buttonsUrl: buttonsUrl,
+                buttonsUrl,
                 arduinoIp: 'http://192.168.31.14:8080',
                 deviceName: '/samsung',
                 selectOptions: [
