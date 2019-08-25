@@ -3,28 +3,38 @@
         <div class="card-header card-box-shadow" :class="classStatus">
             <font-awesome-icon v-if="type === 1" icon='times' class="card-icon"></font-awesome-icon>
             <font-awesome-icon v-if="type === 2" icon='exclamation-triangle' class="card-icon"></font-awesome-icon>
-            <font-awesome-icon v-if="type === 3" icon='info' class="card-icon" ></font-awesome-icon>
+            <font-awesome-icon v-if="type === 3" icon='info' class="card-icon"></font-awesome-icon>
         </div>
         <div class="card-header-text"><span>{{ip}}</span><span>{{name}}</span><span>{{date}}</span></div>
         <div class="content">{{content}}</div>
-        <div class="button-container"><button v-if="type === 1 || type === 2" class="btn" v-on:click="clickOnResolved">Vyriešené</button></div>
+        <div class="button-container">
+            <add-input
+                    v-bind:input_id="'status'"
+                    v-bind:label_text="'Status text'"
+                    v-model="status_text"
+            >
+
+            </add-input>
+            <button v-if="type === 1 || type === 2" class="btn" v-on:click="clickOnResolved">Vyriešené</button>
+        </div>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
     import {requestData} from '../env.js';
-    import { library } from '@fortawesome/fontawesome-svg-core';
-    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+    import {library} from '@fortawesome/fontawesome-svg-core';
+    import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
     import {faTimes} from '@fortawesome/free-solid-svg-icons';
     import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
     import {faInfo} from '@fortawesome/free-solid-svg-icons';
+    import AddInput from './inputs/add-input';
 
     library.add(faTimes);
     library.add(faExclamationTriangle);
     library.add(faInfo);
     export default {
-        components: { FontAwesomeIcon},
+        components: {AddInput, FontAwesomeIcon},
         name: 'home-status-tab',
         props: [
             'type',
@@ -40,6 +50,7 @@
             return {
                 requestData,
                 show: true,
+                status_text: '',
             };
         },
         methods: {
@@ -49,6 +60,7 @@
                     url: 'http://' + this.requestData.API + ':' + this.requestData.API_port + '/status/set-resolved',
                     data: {
                         id_status: this.statusId,
+                        status_text: this.status_text,
                     },
                     headers: {
                         'Content-Type': 'json/plain;charset=utf-8',
@@ -66,7 +78,7 @@
 
 <style lang="scss">
 
-    .card{
+    .card {
         border: 0;
         margin-bottom: 30px;
         margin-top: 30px;
@@ -74,25 +86,30 @@
         color: #333;
         background: #fff;
         width: 100%;
-        .card-header{
+
+        .card-header {
             border-radius: 3px;
             padding: 15px;
             margin-top: -20px;
             float: left;
         }
-        .card-header-error{
+
+        .card-header-error {
             background-color: #E73E3A;
-            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(244,67,54,.4);
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(244, 67, 54, .4);
         }
-        .card-header-warning{
+
+        .card-header-warning {
             background-color: #FC930B;
-            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0,.4);
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(255, 152, 0, .4);
         }
-        .card-header-info{
+
+        .card-header-info {
             background-color: #4AA64F;
-            box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(76,175,80,.4);
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(76, 175, 80, .4);
         }
-        .card-icon{
+
+        .card-icon {
             font-family: 'Material Icons';
             font-weight: normal;
             font-style: normal;
@@ -111,7 +128,8 @@
             text-align: center;
             color: white;
         }
-        .card-header-text{
+
+        .card-header-text {
             justify-content: space-between;
             display: flex;
             line-height: 30px;
@@ -122,10 +140,12 @@
             color: #999;
             flex-wrap: wrap;
         }
-        .content-header{
+
+        .content-header {
             text-align: left;
         }
-        .content{
+
+        .content {
             text-align: left;
             padding-top: 1rem;
             margin-left: 3rem;
@@ -134,11 +154,12 @@
             border-bottom: 1px solid #eee;
             padding-left: 4rem;
         }
-        .button-container{
+
+        .button-container {
             display: flex;
             justify-content: flex-end;
             padding-right: 3rem;
-
+            height: 5rem;
             .btn {
                 cursor: pointer;
                 color: #fff;
