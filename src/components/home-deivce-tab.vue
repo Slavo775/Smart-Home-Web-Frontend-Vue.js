@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="device-content"><img :src="require('../assets/devices/nodeMCU.png')" width="100" height="75"
+        <div class="device-content"><img :src="imageSource" width="100" height="75"
                                          alt="device image">
             <div class="device-information">
                 <div class="device-item">ID: {{id_device}}</div>
