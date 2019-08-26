@@ -61,8 +61,8 @@
         methods: {
             setImageToCart(type) {
                 switch (type) {
-                    case 'nodeMCU': return this.imageSource = '/img/nodeMCU.d941d785.png';
-                    default: return this.imageSource = '/img/unknownDevice.510ace97.png';
+                    case 'nodeMCU': return this.imageSource = '../assets/devices/nodeMCU.png';
+                    default: return this.imageSource = '../assets/devices/unknownDevice.png';
                 }
             },
         },
