@@ -33,5 +33,10 @@ export default new Router({
       name: 'status',
       component: () => import('./views/status-page.vue'),
     },
+    {
+      path: '/devices',
+      name: 'devices',
+      component: () => import('./views/devices.vue'),
+    },
   ],
 });

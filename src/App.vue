@@ -22,6 +22,12 @@
                             Status
                         </router-link>
                     </li>
+                    <li class="menu-item">
+                        <router-link to="/devices">
+                            <font-awesome-icon icon='laptop' class="nav-icon"></font-awesome-icon>
+                            Zariadenia
+                        </router-link>
+                    </li>
                     <li class="menu-item" v-on:click="toggle('ranking')"><a href="javascript:">
                         <font-awesome-icon icon='plus' class="nav-icon"></font-awesome-icon>
                         <p>Pridaj</p></a></li>
@@ -70,6 +76,12 @@
                         <router-link to="/status">
                             <font-awesome-icon icon='info' class="nav-icon"></font-awesome-icon>
                             Status
+                        </router-link>
+                    </li>
+                    <li class="menu-item" v-on:click="dropDownMenuMobile = !dropDownMenuMobile">
+                        <router-link to="/devices">
+                            <font-awesome-icon icon='laptop' class="nav-icon"></font-awesome-icon>
+                            Zariadenia
                         </router-link>
                     </li>
                     <li class="menu-item" v-on:click="toggle('ranking')"><a href="javascript:">
@@ -424,6 +436,7 @@
     import {faLightbulb} from '@fortawesome/free-solid-svg-icons';
     import {faTimes} from '@fortawesome/free-solid-svg-icons';
     import {faInfo} from '@fortawesome/free-solid-svg-icons';
+    import {faLaptop} from '@fortawesome/free-solid-svg-icons';
 
     library.add(faInfo);
     library.add(faBars);
@@ -434,6 +447,7 @@
     library.add(faLightbulb);
     library.add(faDoorClosed);
     library.add(faTimes);
+    library.add(faLaptop);
 
     export default {
         components: {FontAwesomeIcon},
