@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="checkbox" :id="id_device" style="display:none" :checked="checked" v-on:change="checkboxChange"/>
+        <input type="checkbox" :id="id_device" style="display:none" :checked="checked" v-on:change="changeMethod"/>
         <label :for="id_device" class = "toggle" :class="[isChecked ? 'toggle-checked' : 'toggle-nonchecked' ]"><span
                 class = "device-span"
                 :class="[isChecked ? 'device-span-checked' : 'device-span-nonchecked']"></span></label>
@@ -9,37 +9,14 @@
 
 <script>
     import axios from 'axios';
-    import {requestData} from '../../env.js';
     export default {
         name: "main-checkbox",
         props: [
             'checked',
             'id_device',
             'changeMethod',
+            'isChecked'
         ],
-        data(){
-            return{
-                isChecked: this.checked,
-                requestData,
-            }
-        },
-        methods: {
-            checkboxChange() {
-                this.isChecked = !this.isChecked;
-                axios({
-                    method: 'post',
-                    url: 'http://' + this.requestData.API + ':' + this.requestData.API_port + '/device/set-status',
-                    data: {
-                        id_device: this.id_device,
-                        active: this.isChecked,
-                    },
-                    headers: {
-                        'Content-Type': 'json/plain;charset=utf-8',
-                        'Accept': 'application/json',
-                    },
-                })
-            }
-        }
     }
 </script>
 

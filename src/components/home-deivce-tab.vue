@@ -13,13 +13,19 @@
         </div>
         <div class="additional-information">
             <div class="device-item">Active:</div>
-            <main-checkbox v-bind:checked="checked" v-bind:id_device="id_device"></main-checkbox>
+            <main-checkbox v-bind:checked="checked"
+                           v-bind:id_device="id_device"
+                           v-bind:change-method="checkboxChange"
+                           v-bind:is-checked="isChecked"
+            ></main-checkbox>
         </div>
     </div>
 </template>
 
 <script>
     import MainCheckbox from "./inputs/main-checkbox";
+    import axios from 'axios';
+    import {requestData} from '../env.js';
 
     export default {
         name: 'home-deivce-tab',
@@ -37,8 +43,26 @@
         data() {
             return {
                 isChecked: this.checked,
+                requestData,
             }
         },
+        methods: {
+            checkboxChange() {
+                this.isChecked = !this.isChecked;
+                axios({
+                    method: 'post',
+                    url: 'http://' + this.requestData.API + ':' + this.requestData.API_port + '/device/set-status',
+                    data: {
+                        id_device: this.id_device,
+                        active: this.isChecked,
+                    },
+                    headers: {
+                        'Content-Type': 'json/plain;charset=utf-8',
+                        'Accept': 'application/json',
+                    },
+                })
+            }
+        }
     };
 </script>
 
