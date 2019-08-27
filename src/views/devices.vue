@@ -62,6 +62,8 @@
             setImageToCart(type) {
                 switch (type) {
                     case 'nodeMCU': return this.imageSource = '/img/devices/nodeMCU.png';
+                    case 'Hue white lamp' : return this.imageSource = '/img/devices/HueIconPack2019/bulbsClassic.svg';
+                    case 'Hue white spot' : return this.imageSource = '/img/devices/HueIconPack2019/bulbsSpot.svg';
                     default: return this.imageSource = '/img/devices/unknownDevice.png';
                 }
             },
