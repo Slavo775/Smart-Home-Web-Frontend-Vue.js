@@ -14,7 +14,7 @@
         <div class="additional-information">
             <div class="device-item">Active:</div>
             <main-checkbox v-bind:checked="checked"
-                           v-bind:id_device="id_device"
+                           v-bind:id_device="id_for_activating"
                            v-bind:change-method="checkboxChange"
                            v-bind:is-checked="isChecked"
             ></main-checkbox>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import MainCheckbox from "./inputs/main-checkbox";
+    import MainCheckbox from './inputs/main-checkbox';
     import axios from 'axios';
     import {requestData} from '../env.js';
 
@@ -38,13 +38,14 @@
             'type',
             'description',
             'id_device',
+            'id_for_activating',
             'imageSource',
         ],
         data() {
             return {
                 isChecked: this.checked,
                 requestData,
-            }
+            };
         },
         methods: {
             checkboxChange() {
@@ -55,14 +56,15 @@
                     data: {
                         id_device: this.id_device,
                         active: this.isChecked,
+                        type: this.type,
                     },
                     headers: {
                         'Content-Type': 'json/plain;charset=utf-8',
                         'Accept': 'application/json',
                     },
-                })
-            }
-        }
+                });
+            },
+        },
     };
 </script>
 

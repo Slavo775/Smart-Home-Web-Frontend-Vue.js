@@ -10,14 +10,14 @@
 <script>
     import axios from 'axios';
     export default {
-        name: "main-checkbox",
+        name: 'main-checkbox',
         props: [
             'checked',
             'id_device',
             'changeMethod',
-            'isChecked'
+            'isChecked',
         ],
-    }
+    };
 </script>
 
 <style lang="scss">

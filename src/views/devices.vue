@@ -3,22 +3,39 @@
         <home-deivce-tab
                 v-if="responseData.active"
                 v-for="active in responseData.active"
-                v-bind:key = active.id_device
+                v-bind:key = "active.id_device + ' device'"
                 v-bind:checked="true"
                 v-bind:name="active.name"
                 v-bind:description="active.description"
-                v-bind:id_device="active.id_device"
+                v-bind:id_device="active.id_device "
                 v-bind:type="active.type"
                 v-bind:mac="active.mac"
                 v-bind:i-p="active.ip"
-                v-bind:i-d="active.id_device"
+                v-bind:i-d="active.id_device + ' device'"
                 v-bind:image-source="setImageToCart(active.type)"
+                v-bind:id_for_activating="active.id_device + ' device'"
+        >
+        </home-deivce-tab>
+        <home-deivce-tab
+                v-if="responseData.activeGroup"
+                v-for="activeGroup in responseData.activeGroup"
+                v-bind:key = "activeGroup.id_device  + ' group'"
+                v-bind:checked="true"
+                v-bind:name="activeGroup.name"
+                v-bind:description="activeGroup.description"
+                v-bind:id_device="activeGroup.id_device"
+                v-bind:type="activeGroup.type"
+                v-bind:mac="activeGroup.mac"
+                v-bind:i-p="activeGroup.ip"
+                v-bind:i-d="activeGroup.id_device + ' group'"
+                v-bind:image-source="setImageToCart(activeGroup.type)"
+                v-bind:id_for_activating="activeGroup.id_device + ' group'"
         >
         </home-deivce-tab>
         <home-deivce-tab
                 v-if="responseData.nonactive"
                 v-for="nonactive in responseData.nonactive"
-                v-bind:key = nonactive.id_device
+                v-bind:key = "nonactive.id_device  + ' device'"
                 v-bind:checked="false"
                 v-bind:name="nonactive.name"
                 v-bind:description="nonactive.description"
@@ -28,6 +45,24 @@
                 v-bind:i-p="nonactive.ip"
                 v-bind:i-d="nonactive.id_device"
                 v-bind:image-source="setImageToCart(nonactive.type)"
+                v-bind:id_for_activating="nonactive.id_device + ' device'"
+        >
+        </home-deivce-tab>
+
+        <home-deivce-tab
+                v-if="responseData.nonactiveGroup"
+                v-for="nonactiveGroup in responseData.nonactiveGroup"
+                v-bind:key = "nonactiveGroup.id_device  + ' group'"
+                v-bind:checked="false"
+                v-bind:name="nonactiveGroup.name"
+                v-bind:description="nonactiveGroup.description"
+                v-bind:id_device="nonactiveGroup.id_device"
+                v-bind:type="nonactiveGroup.type"
+                v-bind:mac="nonactiveGroup.mac"
+                v-bind:i-p="nonactiveGroup.ip"
+                v-bind:i-d="nonactiveGroup.id_device + ' group'"
+                v-bind:image-source="setImageToCart(nonactiveGroup.type)"
+                v-bind:id_for_activating="nonactiveGroup.id_device + ' group'"
         >
         </home-deivce-tab>
     </div>
@@ -64,6 +99,7 @@
                     case 'nodeMCU': return this.imageSource = '/img/devices/nodeMCU.png';
                     case 'Hue white lamp' : return this.imageSource = '/img/devices/HueIconPack2019/bulbsClassic.svg';
                     case 'Hue white spot' : return this.imageSource = '/img/devices/HueIconPack2019/bulbsSpot.svg';
+                    case 'Group' : return this.imageSource = '/img/devices/HueIconPack2019/bulbGeneralGroup.svg';
                     default: return this.imageSource = '/img/devices/unknownDevice.png';
                 }
             },
