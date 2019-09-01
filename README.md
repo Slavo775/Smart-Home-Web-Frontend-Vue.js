@@ -1,2 +1,2 @@
-#install sideBar menu
-```npm i vue-sidebar-menu --save```
+#install vue slider
+```npm i vue-slider-component```
