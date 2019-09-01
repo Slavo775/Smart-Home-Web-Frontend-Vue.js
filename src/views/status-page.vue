@@ -39,6 +39,10 @@
                 v-bind:date = info.status_time
                 v-bind:status-id = info.id_status
         ></home-status-tab>
+        <div v-if="!requestData.errors && !requestData.warnings && !requestData.infos" class = "no-errors">
+            <img src="/img/juchu.png" alt="juchu" class="image">
+            No errors found
+        </div>
     </div>
 </template>
 
@@ -124,6 +128,13 @@
     @media only screen and (max-width: 600px) {
         .home {
             padding-left: 0;
+            .no-errors{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .image{
+                width: -webkit-fill-available;
+            }
         }
     }
 </style>
