@@ -85,8 +85,6 @@
                     headers: {
                         'Content-Type': 'json/plain;charset=utf-8',
                     },
-                }).then((response) => {
-                    //this.setGroupStatus();
                 })
             },
             setGroupStatus() {
@@ -107,12 +105,9 @@
                 });
             },
             changeLightsState() {
-                console.log(this.lightsInGroup);
-
                 Object.keys(this.lightsInGroup).forEach(key => {
                     this.lightsInGroup[key].on = this.isChecked;
                     this.lightsInGroup[key].bri = this.bri;
-                    console.log(this.lightsInGroup[key].bri);
                 })
             },
             onChangeBrightness() {
