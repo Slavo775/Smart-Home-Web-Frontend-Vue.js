@@ -7,6 +7,9 @@
                     <div class="group-item">ID: {{id_group}}</div>
                     <div class="group-item">Name: {{name}}</div>
                 </div>
+                <div v-if="!reachable" class="not-reachable">
+                    <font-awesome-icon icon='exclamation-triangle'></font-awesome-icon>
+                </div>
             </div>
             <div class="group-additional-information">
                 <div class="group-item">Active:</div>
@@ -33,6 +36,7 @@
                    v-bind:ip="light.ip"
                    v-bind:image-source="getImageSourceForLight(light.type)"
                    v-bind:on="light.on"
+                   v-bind:reachable="light.reachable"
         ></light-tab>
     </div>
 </template>
@@ -43,10 +47,16 @@
     import 'vue-slider-component/theme/default.css'
     import MainCheckbox from '../inputs/main-checkbox';
     import axios from 'axios';
+    import {library} from '@fortawesome/fontawesome-svg-core';
+    import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+    import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
+
+    library.add(faExclamationTriangle);
+
 
     export default {
         name: 'group-tab',
-        components: {MainCheckbox, LightTab, VueSlider},
+        components: {MainCheckbox, LightTab, VueSlider, FontAwesomeIcon},
         data() {
             return {
                 isOpen: false,
@@ -54,7 +64,11 @@
                 checked: this.on,
                 isChecked: this.on,
                 lightsInGroup: this.lights,
+                reachable: false,
             }
+        },
+        created() {
+            this.reachable = this.isReachable();
         },
         props: [
             'imageSource',
@@ -74,6 +88,15 @@
                 if (isChecked) {
                     this.setGroupBrightness(brightness, id_from_bridge);
                 }
+            },
+            isReachable() {
+                let reachable = true;
+                Object.keys(this.lightsInGroup).forEach(key => {
+                    if(!this.lightsInGroup[key].reachable){
+                        reachable = false
+                    }
+                });
+                return reachable;
             },
             setGroupBrightness: (brightness, id_from_bridge) => {
                 axios({
@@ -162,6 +185,10 @@
                     text-transform: capitalize;
                     font-size: 13px;
                 }
+            }
+            .not-reachable{
+                font-size: 4.5rem;
+                color: red;
             }
         }
 

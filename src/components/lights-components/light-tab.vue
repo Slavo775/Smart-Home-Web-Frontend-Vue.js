@@ -7,6 +7,9 @@
                 <div class="light-item">Name: {{name}}</div>
                 <div class="light-item">IP: {{ip}}</div>
             </div>
+            <div v-if="!reachableLight" class="not-reachable">
+                <font-awesome-icon icon='exclamation-triangle'></font-awesome-icon>
+            </div>
         </div>
         <div class="light-additional-information">
             <div class="light-item">Active:</div>
@@ -30,10 +33,15 @@
     import 'vue-slider-component/theme/default.css';
     import MainCheckbox from "../inputs/main-checkbox";
     import axios from 'axios';
+    import {library} from '@fortawesome/fontawesome-svg-core';
+    import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+    import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
+
+    library.add(faExclamationTriangle);
 
     export default {
         name: 'light-tab',
-        components: {MainCheckbox, VueSlider},
+        components: {MainCheckbox, VueSlider, FontAwesomeIcon},
         props: [
             'imageSource',
             'id_device',
@@ -41,6 +49,7 @@
             'ip',
             'bri',
             'on',
+            'reachable',
         ],
         watch: {
             bri: function (newBri) {
@@ -54,6 +63,7 @@
             return {
                 brightness: this.bri,
                 isCheckedLight: this.on,
+                reachableLight: this.reachable,
             };
         },
         methods: {
@@ -120,7 +130,7 @@
             padding-top: 1rem;
             padding-bottom: 1rem;
 
-            .lilght-information {
+            .light-information {
                 margin-left: 1rem;
                 width: 100%;
 
@@ -128,6 +138,10 @@
                     text-transform: capitalize;
                     font-size: 13px;
                 }
+            }
+            .not-reachable{
+                font-size: 4.5rem;
+                color: red;
             }
         }
 
