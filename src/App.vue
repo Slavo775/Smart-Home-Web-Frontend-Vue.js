@@ -23,9 +23,15 @@
                         </router-link>
                     </li>
                     <li class="menu-item">
-                        <router-link to="/devices">
+                        <router-link to="/zariadenia">
                             <font-awesome-icon icon='laptop' class="nav-icon"></font-awesome-icon>
                             Zariadenia
+                        </router-link>
+                    </li>
+                    <li class="menu-item">
+                        <router-link to="/svetlo">
+                            <font-awesome-icon icon='lightbulb' class="nav-icon"></font-awesome-icon>
+                            Svetlo
                         </router-link>
                     </li>
                     <li class="menu-item" v-on:click="toggle('ranking')"><a href="javascript:">
@@ -79,9 +85,15 @@
                         </router-link>
                     </li>
                     <li class="menu-item" v-on:click="dropDownMenuMobile = !dropDownMenuMobile">
-                        <router-link to="/devices">
+                        <router-link to="/zariadenia">
                             <font-awesome-icon icon='laptop' class="nav-icon"></font-awesome-icon>
                             Zariadenia
+                        </router-link>
+                    </li>
+                    <li class="menu-item" v-on:click="dropDownMenuMobile = !dropDownMenuMobile">
+                        <router-link to="/svetlo">
+                            <font-awesome-icon icon='lightbulb' class="nav-icon"></font-awesome-icon>
+                            Svetlo
                         </router-link>
                     </li>
                     <li class="menu-item" v-on:click="toggle('ranking')"><a href="javascript:">

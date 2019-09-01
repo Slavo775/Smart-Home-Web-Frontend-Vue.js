@@ -34,9 +34,14 @@ export default new Router({
       component: () => import('./views/status-page.vue'),
     },
     {
-      path: '/devices',
+      path: '/zariadenia',
       name: 'devices',
       component: () => import('./views/devices.vue'),
+    },
+    {
+      path: '/svetlo',
+      name: 'hue-lights',
+      component: () => import('./views/hue_lights.vue'),
     },
   ],
 });
