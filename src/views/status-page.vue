@@ -1,48 +1,53 @@
 <template>
-    <div class = 'home'>
-        <div class='status-header' v-if = requestData.errors>errors</div>
-        <home-status-tab
-                v-if="requestData.errors"
-                v-for="error in requestData.errors"
-                v-bind:key = error.id_status
-                v-bind:class-status = 'classError'
-                v-bind:type = 1
-                v-bind:content = error.status_code
-                v-bind:ip = error.ip
-                v-bind:name = error.name
-                v-bind:date = error.status_time
-                v-bind:status-id = error.id_status
-        ></home-status-tab>
-        <div class='status-header' v-if="requestData.warnings">warnings</div>
-        <home-status-tab
-                v-if="requestData.warnings"
-                v-for="warning in requestData.warnings"
-                v-bind:key = warning.id_status
-                v-bind:class-status = 'classWarning'
-                v-bind:type = 2
-                v-bind:content = warning.status_code
-                v-bind:ip = warning.ip
-                v-bind:name = warning.name
-                v-bind:date = warning.status_time
-                v-bind:status-id = warning.id_status
-        ></home-status-tab>
-        <div class='status-header' v-if="requestData.infos" >info</div>
-        <home-status-tab
-                v-if="requestData.infos"
-                v-for="info in requestData.infos"
-                v-bind:key = info.id_status
-                v-bind:class-status = 'classInfo'
-                v-bind:type = 3
-                v-bind:content = info.status_code
-                v-bind:ip = info.ip
-                v-bind:name = info.name
-                v-bind:date = info.status_time
-                v-bind:status-id = info.id_status
-        ></home-status-tab>
-        <div v-if="!requestData.errors && !requestData.warnings && !requestData.infos" class = "no-errors">
+    <div class='home'>
+        <div v-if="!emptyErrors && status" class='status-header'>errors</div>
+        <div v-if="!emptyErrors && status">
+            <home-status-tab
+                    v-for="error in responseData.errors"
+                    v-bind:key=error.id_status
+                    v-bind:class-status='classError'
+                    v-bind:type=1
+                    v-bind:content=error.status_code
+                    v-bind:ip=error.ip
+                    v-bind:name=error.name
+                    v-bind:date=error.status_time
+                    v-bind:status-id=error.id_status
+            ></home-status-tab>
+        </div>
+        <div class='status-header' v-if="!emptyWarnings && status">warnings</div>
+        <div v-if="!emptyWarnings && status">
+            <home-status-tab
+                    v-for="warning in responseData.warnings"
+                    v-bind:key=warning.id_status
+                    v-bind:class-status='classWarning'
+                    v-bind:type=2
+                    v-bind:content=warning.status_code
+                    v-bind:ip=warning.ip
+                    v-bind:name=warning.name
+                    v-bind:date=warning.status_time
+                    v-bind:status-id=warning.id_status
+            ></home-status-tab>
+        </div>
+        <div class='status-header' v-if="!emptyInfos && status">info</div>
+        <div v-if="!emptyInfos && status">
+            <home-status-tab
+                    v-for="info in responseData.infos"
+                    v-bind:key=info.id_status
+                    v-bind:class-status='classInfo'
+                    v-bind:type=3
+                    v-bind:content=info.status_code
+                    v-bind:ip=info.ip
+                    v-bind:name=info.name
+                    v-bind:date=info.status_time
+                    v-bind:status-id=info.id_status
+            ></home-status-tab>
+        </div>
+        <div v-if="emptyStatus" class="no-errors">
             <img src="/img/juchu.png" alt="juchu" class="image">
             No errors found
         </div>
+
+        <loader v-if="loaderStatus"></loader>
     </div>
 </template>
 
@@ -50,9 +55,11 @@
     import HomeStatusTab from '../components/home-status-tab';
     import axios from 'axios';
     import {requestData} from '../env.js';
+    import Loader from '../components/loader';
+
     export default {
         name: 'Home',
-        components: {HomeStatusTab},
+        components: {Loader, HomeStatusTab},
         created() {
             axios({
                 method: 'get',
@@ -62,15 +69,39 @@
                     'Accept': 'application/json',
                 },
             }).then((response) => {
-                this.requestData = response.data.data;
-                return response;
+                this.loaderStatus = false;
+                if (response.data.status) {
+                    if (response.data.data === null) {
+                        this.emptyStatus = false;
+                    }
+                    this.responseData = response.data.data;
+                    if (this.responseData.errors !== null) {
+                        this.emptyErrors = false;
+                    }
+                    if (this.responseData.warnings !== null) {
+                        this.emptyWarnings = false;
+                    }
+                    if (this.responseData.infos !== null) {
+                        this.emptyInfos = true;
+                    }
+                    this.status = true;
+                    this.error = false;
+                    this.message = response.data.message;
+                    this.code = response.data.code;
+                } else {
+                    this.emptyStatus = false;
+                    this.status = false;
+                    this.error = true;
+                    this.message = response.data.message;
+                    this.code = response.data.code;
+                }
             }).catch(() => {
                 return false;
             });
             return false;
         },
         data() {
-            return{
+            return {
                 classError: 'card-header-error',
                 classWarning: 'card-header-warning',
                 classInfo: 'card-header-info',
@@ -83,6 +114,15 @@
                 statusData: [],
                 requestData,
                 responseData: [],
+                error: false,
+                status: false,
+                message: '',
+                code: 0,
+                loaderStatus: true,
+                emptyStatus: false,
+                emptyErrors: true,
+                emptyWarnings: true,
+                emptyInfos: true,
             };
         },
         methods: {
@@ -111,7 +151,8 @@
         margin-left: 1rem;
         margin-right: 1rem;
         text-align: center;
-        .status-header{
+
+        .status-header {
             text-transform: uppercase;
             padding: 5px 0;
             display: inline-block;
@@ -125,14 +166,17 @@
             width: -webkit-fill-available;
         }
     }
+
     @media only screen and (max-width: 600px) {
         .home {
             padding-left: 0;
-            .no-errors{
+
+            .no-errors {
                 display: flex;
                 flex-wrap: wrap;
             }
-            .image{
+
+            .image {
                 width: -webkit-fill-available;
             }
         }

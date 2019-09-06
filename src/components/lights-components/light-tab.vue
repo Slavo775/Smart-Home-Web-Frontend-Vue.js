@@ -31,15 +31,18 @@
 <script>
     import VueSlider from 'vue-slider-component';
     import 'vue-slider-component/theme/default.css';
-    import MainCheckbox from "../inputs/main-checkbox";
+    import MainCheckbox from '../inputs/main-checkbox';
     import axios from 'axios';
     import {library} from '@fortawesome/fontawesome-svg-core';
     import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
     import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
+    import hue_base from './hue_base.vue';
+    import {hue_params} from '../../hue-params.js';
 
     library.add(faExclamationTriangle);
 
     export default {
+        extends: hue_base,
         name: 'light-tab',
         components: {MainCheckbox, VueSlider, FontAwesomeIcon},
         props: [
@@ -52,10 +55,10 @@
             'reachable',
         ],
         watch: {
-            bri: function (newBri) {
+            bri(newBri) {
                 this.brightness = newBri;
             },
-            on: function (newOn) {
+            on(newOn) {
                 this.isCheckedLight = newOn;
             },
         },
@@ -64,50 +67,25 @@
                 brightness: this.bri,
                 isCheckedLight: this.on,
                 reachableLight: this.reachable,
+                hue_params,
             };
         },
         methods: {
             onChangeLight() {
                 if (this.isCheckedLight) {
-                    this.setLightBrightness();
+                    this.changeBrightness(hue_params.TYPE_LIGHT, this.ip, this.brightness);
                 }
             },
             checkboxChangeLight() {
                 this.isCheckedLight = !this.isCheckedLight;
-                this.setLightState();
+                if (this.isCheckedLight) {
+                    this.onLight(hue_params.TYPE_LIGHT, this.ip, this.brightness);
+                } else {
+                    this.offLight(hue_params.TYPE_LIGHT, this.ip);
+                }
             },
-            setLightState() {
-                axios({
-                    method: 'put',
-                    url: 'http://192.168.31.36/api/AH7Or1g7rXJhJbOwv1VEDA-kPLra6O-JAu3waKqk/lights/' + this.ip + '/state',
-                    data: {
-                        on: this.isCheckedLight,
-                        sat: 254,
-                        bri: this.brightness,
-                        hue: 10000,
-                    },
-                    headers: {
-                        'Content-Type': 'json/plain;charset=utf-8',
-                    },
-                }).then((response) => {
-                    this.$emit('light', this.isCheckedLight);
-                });
-            },
-            setLightBrightness() {
-                axios({
-                    method: 'put',
-                    url: 'http://192.168.31.36/api/AH7Or1g7rXJhJbOwv1VEDA-kPLra6O-JAu3waKqk/lights/' + this.ip + '/state',
-                    data: {
-                        bri: this.brightness,
-                    },
-                    headers: {
-                        'Content-Type': 'json/plain;charset=utf-8',
-                    },
-                })
-            },
-        }
-
-    }
+        },
+    };
 </script>
 
 <style lang="scss">

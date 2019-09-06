@@ -1,7 +1,7 @@
 <template>
     <div class="device-container">
         <home-deivce-tab
-                v-if="responseData.active"
+                v-if="responseData.active && status"
                 v-for="active in responseData.active"
                 v-bind:key = "active.id_device + ' device'"
                 v-bind:checked="true"
@@ -17,7 +17,7 @@
         >
         </home-deivce-tab>
         <home-deivce-tab
-                v-if="responseData.activeGroup"
+                v-if="responseData.activeGroup && status"
                 v-for="activeGroup in responseData.activeGroup"
                 v-bind:key = "activeGroup.id_device  + ' group'"
                 v-bind:checked="true"
@@ -33,7 +33,7 @@
         >
         </home-deivce-tab>
         <home-deivce-tab
-                v-if="responseData.nonactive"
+                v-if="responseData.nonactive && status"
                 v-for="nonactive in responseData.nonactive"
                 v-bind:key = "nonactive.id_device  + ' device'"
                 v-bind:checked="false"
@@ -50,7 +50,7 @@
         </home-deivce-tab>
 
         <home-deivce-tab
-                v-if="responseData.nonactiveGroup"
+                v-if="responseData.nonactiveGroup && status"
                 v-for="nonactiveGroup in responseData.nonactiveGroup"
                 v-bind:key = "nonactiveGroup.id_device  + ' group'"
                 v-bind:checked="false"
@@ -65,6 +65,12 @@
                 v-bind:id_for_activating="nonactiveGroup.id_device + ' group'"
         >
         </home-deivce-tab>
+        <error-page
+                v-if="error"
+                v-bind:error-message="message"
+                v-bind:error-code="code"
+        ></error-page>
+        <loader v-if="!status && !error"></loader>
     </div>
 </template>
 
@@ -72,15 +78,29 @@
     import HomeDeivceTab from '../components/home-deivce-tab';
     import axios from 'axios';
     import {requestData} from '../env.js';
+    import ErrorPage from '../components/error-page';
+    import Loader from '../components/loader';
     export default {
         name: 'devices',
-        components: {HomeDeivceTab},
+        components: {Loader, ErrorPage, HomeDeivceTab},
         created() {
             axios({
                 method: 'get',
                 url: 'http://' + this.requestData.API + ':' + this.requestData.API_port + '/device/all-device',
             }).then((response) => {
-                this.responseData = response.data.data;
+                if (response.data.status) {
+                    this.responseData = response.data.data;
+                    this.code = response.data.code;
+                    this.message = response.data.message;
+                    this.loader = false;
+                    this.status = true;
+                } else {
+                    this.loader = false;
+                    this.error = true;
+                    this.message = response.date.message;
+                    this.code = response.data.code;
+                    this.status = false;
+                }
             }).catch(() => {
                 return false;
             });
@@ -91,6 +111,11 @@
                 responseData: [],
                 requestData,
                 imageSource: '',
+                loader: true,
+                error: false,
+                status: false,
+                message: '',
+                code: 0,
             };
         },
         methods: {

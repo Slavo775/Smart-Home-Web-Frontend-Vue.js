@@ -37,25 +37,29 @@
                    v-bind:image-source="getImageSourceForLight(light.type)"
                    v-bind:on="light.on"
                    v-bind:reachable="light.reachable"
+                   @light = lightChangeState
         ></light-tab>
     </div>
 </template>
 
 <script>
     import LightTab from './light-tab';
-    import VueSlider from 'vue-slider-component'
-    import 'vue-slider-component/theme/default.css'
+    import VueSlider from 'vue-slider-component';
+    import 'vue-slider-component/theme/default.css';
     import MainCheckbox from '../inputs/main-checkbox';
     import axios from 'axios';
     import {library} from '@fortawesome/fontawesome-svg-core';
     import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
     import {faExclamationTriangle} from '@fortawesome/free-solid-svg-icons';
+    import hue_base from './hue_base.vue';
+    import {hue_params} from '../../hue-params.js';
 
     library.add(faExclamationTriangle);
 
 
     export default {
         name: 'group-tab',
+        extends: hue_base,
         components: {MainCheckbox, LightTab, VueSlider, FontAwesomeIcon},
         data() {
             return {
@@ -65,7 +69,8 @@
                 isChecked: this.on,
                 lightsInGroup: this.lights,
                 reachable: false,
-            }
+                hue_params,
+            };
         },
         created() {
             this.reachable = this.isReachable();
@@ -77,66 +82,63 @@
             'id_from_bridge',
             'brightness',
             'on',
-            'lights'
+            'lights',
         ],
         methods: {
             checkboxChange() {
                 this.isChecked = !this.isChecked;
-                this.setGroupStatus();
+                if (this.isChecked) {
+                    this.onLight(hue_params.TYPE_GROUP, this.id_from_bridge, this.bri);
+                } else {
+                    this.offLight(hue_params.TYPE_GROUP, this.id_from_bridge);
+                }
+                this.changeLightsState();
             },
-            onChangeSlider(brightness, isChecked, id_from_bridge) {
+            lightChangeState(value, ip) {
+                if (value) {
+                   this.isChecked = value;
+                   this.lightsInGroup[ip].on = value;
+                } else {
+                    this.lightsInGroup[ip].on = value;
+                    if (!this.checkLights()) {
+                        this.isChecked = false;
+                    }
+                }
+            },
+            checkLights() {
+                let status = false;
+                Object.keys(this.lightsInGroup).forEach((key) => {
+                    if (this.lightsInGroup[key].on) {
+                        status = true;
+                    }
+                });
+                return status;
+            },
+            onChangeSlider(brightness, isChecked, idFromBridge) {
                 if (isChecked) {
-                    this.setGroupBrightness(brightness, id_from_bridge);
+                    this.changeBrightness(hue_params.TYPE_GROUP, idFromBridge, brightness);
+                    this.onChangeBrightness();
                 }
             },
             isReachable() {
                 let reachable = true;
-                Object.keys(this.lightsInGroup).forEach(key => {
-                    if(!this.lightsInGroup[key].reachable){
-                        reachable = false
+                Object.keys(this.lightsInGroup).forEach((key) => {
+                    if (!this.lightsInGroup[key].reachable) {
+                        reachable = false;
                     }
                 });
                 return reachable;
             },
-            setGroupBrightness: (brightness, id_from_bridge) => {
-                axios({
-                    method: 'put',
-                    url: 'http://192.168.31.36/api/AH7Or1g7rXJhJbOwv1VEDA-kPLra6O-JAu3waKqk/groups/' + id_from_bridge + '/action',
-                    data: {
-                        bri: brightness,
-                    },
-                    headers: {
-                        'Content-Type': 'json/plain;charset=utf-8',
-                    },
-                })
-            },
-            setGroupStatus() {
-                axios({
-                    method: 'put',
-                    url: 'http://192.168.31.36/api/AH7Or1g7rXJhJbOwv1VEDA-kPLra6O-JAu3waKqk/groups/' + this.id_from_bridge + '/action',
-                    data: {
-                        on: this.isChecked,
-                        sat: 254,
-                        bri: this.bri,
-                        hue: 10000,
-                    },
-                    headers: {
-                        'Content-Type': 'json/plain;charset=utf-8',
-                    },
-                }).then((response) => {
-                    this.changeLightsState();
-                });
-            },
             changeLightsState() {
-                Object.keys(this.lightsInGroup).forEach(key => {
+                Object.keys(this.lightsInGroup).forEach((key) => {
                     this.lightsInGroup[key].on = this.isChecked;
                     this.lightsInGroup[key].bri = this.bri;
-                })
+                });
             },
             onChangeBrightness() {
-                Object.keys(this.lightsInGroup).forEach(key => {
+                Object.keys(this.lightsInGroup).forEach((key) => {
                     this.lightsInGroup[key].bri = this.bri;
-                })
+                });
             },
             getImageSourceForLight(value) {
                 switch (value) {
