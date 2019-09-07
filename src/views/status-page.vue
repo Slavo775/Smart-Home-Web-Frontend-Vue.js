@@ -1,7 +1,7 @@
 <template>
     <div class='home'>
-        <div v-if="!emptyErrors && status" class='status-header'>errors</div>
-        <div v-if="!emptyErrors && status">
+        <div v-if="Errors">
+            <div class='status-header'>errors</div>
             <home-status-tab
                     v-for="error in responseData.errors"
                     v-bind:key=error.id_status
@@ -14,8 +14,8 @@
                     v-bind:status-id=error.id_status
             ></home-status-tab>
         </div>
-        <div class='status-header' v-if="!emptyWarnings && status">warnings</div>
-        <div v-if="!emptyWarnings && status">
+        <div v-if="Warnings">
+            <div class='status-header'>warnings</div>
             <home-status-tab
                     v-for="warning in responseData.warnings"
                     v-bind:key=warning.id_status
@@ -28,8 +28,8 @@
                     v-bind:status-id=warning.id_status
             ></home-status-tab>
         </div>
-        <div class='status-header' v-if="!emptyInfos && status">info</div>
-        <div v-if="!emptyInfos && status">
+        <div v-if="Infos">
+            <div class='status-header'>info {{Infos}}</div>
             <home-status-tab
                     v-for="info in responseData.infos"
                     v-bind:key=info.id_status
@@ -71,18 +71,15 @@
             }).then((response) => {
                 this.loaderStatus = false;
                 if (response.data.status) {
-                    if (response.data.data === null) {
-                        this.emptyStatus = false;
-                    }
                     this.responseData = response.data.data;
-                    if (this.responseData.errors !== null) {
-                        this.emptyErrors = true;
+                    if (this.responseData.errors !== undefined) {
+                        this.Errors = true;
                     }
-                    if (this.responseData.warnings !== null) {
-                        this.emptyWarnings = true;
+                    if (this.responseData.warnings !== undefined) {
+                        this.Warnings = true;
                     }
-                    if (this.responseData.infos !== null) {
-                        this.emptyInfos = true;
+                    if (this.responseData.infos !== undefined) {
+                        this.Infos = true;
                     }
                     if (response.data.code === 201) {
                         this.emptyStatus = true;
@@ -123,9 +120,9 @@
                 code: 0,
                 loaderStatus: true,
                 emptyStatus: false,
-                emptyErrors: true,
-                emptyWarnings: true,
-                emptyInfos: true,
+                Errors: false,
+                Warnings: false,
+                Infos: false,
             };
         },
         methods: {
