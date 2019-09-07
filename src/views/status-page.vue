@@ -42,7 +42,7 @@
                     v-bind:status-id=info.id_status
             ></home-status-tab>
         </div>
-        <div v-if="emptyStatus" class="no-errors">
+        <div v-if="emptyStatus" >
             <img src="/img/juchu.png" alt="juchu" class="image">
             No errors found
         </div>
@@ -76,13 +76,16 @@
                     }
                     this.responseData = response.data.data;
                     if (this.responseData.errors !== null) {
-                        this.emptyErrors = false;
+                        this.emptyErrors = true;
                     }
                     if (this.responseData.warnings !== null) {
-                        this.emptyWarnings = false;
+                        this.emptyWarnings = true;
                     }
                     if (this.responseData.infos !== null) {
                         this.emptyInfos = true;
+                    }
+                    if (response.data.code === 201) {
+                        this.emptyStatus = true;
                     }
                     this.status = true;
                     this.error = false;

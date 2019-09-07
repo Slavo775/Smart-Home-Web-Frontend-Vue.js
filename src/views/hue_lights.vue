@@ -36,7 +36,7 @@
             }).then((response) => {
                 this.loader = false;
                 if (response.data.status) {
-                    this.responseData = response.data.result;
+                    this.responseData = response.data.data;
                     this.errorCode = response.data.code;
                     this.errorMessage = response.data.message;
                     this.status = true;
