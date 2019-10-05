@@ -45,6 +45,7 @@
             'date',
             'errorCode',
             'statusId',
+            'statusType',
         ],
         data() {
             return {
@@ -66,8 +67,11 @@
                         'Content-Type': 'json/plain;charset=utf-8',
                         'Accept': 'application/json',
                     },
-                }).then(() => {
-                    this.show = false;
+                }).then((response) => {
+                    if (response.data.status) {
+                        this.show = false;
+                        this.$emit('clickOnResolved', this.statusId, this.statusType);
+                    }
                 }).catch(() => {
                     return false;
                 });

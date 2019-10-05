@@ -12,6 +12,7 @@
                     v-bind:name=error.name
                     v-bind:date=error.status_time
                     v-bind:status-id=error.id_status
+                    v-bind:status-type="error.status_type"
             ></home-status-tab>
         </div>
         <div v-if="Warnings">
@@ -26,6 +27,7 @@
                     v-bind:name=warning.name
                     v-bind:date=warning.status_time
                     v-bind:status-id=warning.id_status
+                    v-bind:status-type="warning.status_type"
             ></home-status-tab>
         </div>
         <div v-if="Infos">
@@ -141,6 +143,59 @@
                 });
                 return false;
             },
+        },
+        checkStatusAfterClickOnResolved(statusId, statusType) {
+            let status = false;
+            if (statusType === 1) {
+                this.changeUnresolvedErrorStatus(statusId);
+                if (this.checkUnresolvedStatus(this.responseData.errors)) {
+                    status = false;
+                    this.Errors = true;
+                } else {
+                    status = true;
+                    this.Errors = false;
+                }
+            }
+            if (statusType === 2) {
+                this.changeUnresolvedWarningsStatus();
+                if (this.checkUnresolvedStatus(this.responseData.warnings)) {
+                    status = false;
+                    this.Warnings = true;
+                } else {
+                    status = true;
+                    this.Warnings = false;
+                }
+            }
+            status ? this.emptyStatus = true : this.emptyStatus = false;
+        },
+        /**
+         * if return true one or more errors is unresolved
+         * @param statusId
+         * @returns {boolean}
+         */
+        checkUnresolvedStatus(responseData) {
+            let status = false;
+            Object.keys(responseData).forEach((key) => {
+                if (responseData[key].resolved) {
+                    status = true;
+                }
+            });
+            return status;
+        },
+
+        changeUnresolvedErrorStatus(statusId) {
+            Object.keys(this.responseData.errors).forEach((key) => {
+                if (this.responseData.errors[key].id_status === statusId) {
+                    this.responseData.errors[key].resolved = 1;
+                }
+            });
+        },
+        changeUnresolvedWarningsStatus(statusId) {
+            Object.keys(this.responseData.warnings).forEach((key) => {
+                if (this.responseData.warnings[key].id_status === statusId) {
+                    this.responseData.warnings[key].resolved = 1;
+                }
+            });
         },
     };
 </script>
