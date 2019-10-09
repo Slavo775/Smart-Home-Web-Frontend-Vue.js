@@ -1,6 +1,6 @@
 <template>
     <label :for="input_id" class="inp">
-        <input type="text" id="inp" placeholder="&nbsp;" v-on:input="$emit('input', $event.target.value)" :focus="hide">
+        <input type="text" :id="input_id" placeholder="&nbsp;" v-on:input="$emit('input', $event.target.value)" :focus="hide">
         <span class="label">{{label_text}}</span>
         <span class="border"></span>
     </label>
@@ -25,9 +25,9 @@
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     position: relative;
-    margin: auto;
     width: 100%;
     max-width: 280px;
+    margin: 1rem 0rem 1rem 0rem;
     .label{
         position: absolute;
         top: 16px;

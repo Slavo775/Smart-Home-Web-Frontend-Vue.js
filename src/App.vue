@@ -42,15 +42,10 @@
                             <font-awesome-icon icon='laptop-medical' class="nav-icon"></font-awesome-icon>
                             <p>Pridaj Zariadenie</p></router-link>
                     </li>
-                    <li class="menu-item" v-if="dropDownMenu">
-                        <router-link to="/pridaj-izbu">
-                            <font-awesome-icon icon='door-closed' class="nav-icon"></font-awesome-icon>
-                            <p>Pridaj Izbu</p></router-link>
-                    </li>
-                    <li class="menu-item" v-if="dropDownMenu">
-                        <router-link to="/pridaj-zariadenie">
-                            <font-awesome-icon icon='lightbulb' class="nav-icon"></font-awesome-icon>
-                            <p>Pridaj Hue Zariadenie</p></router-link>
+                    <li class="menu-item">
+                        <router-link to="/pridaj-pouzivatela" v-if="dropDownMenu">
+                            <font-awesome-icon icon='users' class="nav-icon"></font-awesome-icon>
+                            <p>Pridaj Používateľa</p></router-link>
                     </li>
                 </ul>
             </div>
@@ -104,15 +99,10 @@
                             <font-awesome-icon icon='laptop-medical' class="nav-icon"></font-awesome-icon>
                             <p>Pridaj Zariadenie</p></router-link>
                     </li>
-                    <li class="menu-item" v-if="dropDownMenu" v-on:click="dropDownMenuMobile = !dropDownMenuMobile">
-                        <router-link to="/pridaj-izbu">
-                            <font-awesome-icon icon='door-closed' class="nav-icon"></font-awesome-icon>
-                            <p>Pridaj Izbu</p></router-link>
-                    </li>
-                    <li class="menu-item" v-if="dropDownMenu" v-on:click="dropDownMenuMobile = !dropDownMenuMobile">
-                        <router-link to="/pridaj-zariadenie">
-                            <font-awesome-icon icon='lightbulb' class="nav-icon"></font-awesome-icon>
-                            <p>Pridaj Hue Zariadenie</p></router-link>
+                    <li class="menu-item" v-on:click="dropDownMenuMobile = !dropDownMenuMobile">
+                        <router-link to="/pridaj-pouzivatela" v-if="dropDownMenu">
+                            <font-awesome-icon icon='users' class="nav-icon"></font-awesome-icon>
+                            <p>Pridaj Používateľa</p></router-link>
                     </li>
                 </ul>
             </div>
@@ -449,6 +439,7 @@
     import {faTimes} from '@fortawesome/free-solid-svg-icons';
     import {faInfo} from '@fortawesome/free-solid-svg-icons';
     import {faLaptop} from '@fortawesome/free-solid-svg-icons';
+    import {faUsers} from '@fortawesome/free-solid-svg-icons';
 
     library.add(faInfo);
     library.add(faBars);
@@ -460,6 +451,7 @@
     library.add(faDoorClosed);
     library.add(faTimes);
     library.add(faLaptop);
+    library.add(faUsers);
 
     export default {
         components: {FontAwesomeIcon},

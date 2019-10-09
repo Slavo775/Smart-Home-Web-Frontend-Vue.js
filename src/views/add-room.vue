@@ -1,5 +1,5 @@
 <template>
-    <div class="add-room-content">
+    <div class="add-form-container">
         <add-room-form></add-room-form>
     </div>
 </template>
@@ -12,17 +12,7 @@
     };
 </script>
 
-<style lang="less">
-    .add-room-content {
-        padding-left: 260px;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-    }
+<style lang="sass">
+    @import "~@/Shared.scss"
+
 </style>

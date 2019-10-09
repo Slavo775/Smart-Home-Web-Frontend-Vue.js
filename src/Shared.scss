@@ -34,6 +34,22 @@ $media-types: (
   }
 }
 
+.add-form-container{
+  padding-left: 260px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  @include respond-to(mobile){
+    padding-left: 0;
+  }
+}
+
 .one-remote-container{
   background: white;
   padding: 1rem;

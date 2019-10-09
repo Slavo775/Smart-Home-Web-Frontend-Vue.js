@@ -43,5 +43,10 @@ export default new Router({
       name: 'hue-lights',
       component: () => import('./views/hue_lights.vue'),
     },
+    {
+      path: '/pridaj-pouzivatela',
+      name: 'add-user',
+      component: () => import('./views/add-user.vue'),
+    },
   ],
 });
